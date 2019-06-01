@@ -13,7 +13,8 @@ My visualization will include:
 - a world map ranking each country per amount of food produced (maybe per capita?) [MVP]
 - a pie chart showing the % of food (for humans) v the % of feed (for livestock) [MVP]
 - a bar chart showing the types of food produced in each category and country [MVP]
-- a button to change the year (optional)
+- a dropdown menu  to change the year (other interactive component)
+- a button to choose a random country and year (other interactive component)
 
 This visualization will be aimed at people who would like to know more about global food production around the world, but also specific production per country.
 
