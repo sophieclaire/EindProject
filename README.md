@@ -28,7 +28,7 @@ I will be using data from https://www.kaggle.com/dorbicycle/world-foodfeed-produ
 The data comes in a csv file. I might have to convert this into a JSON file.
 
 ## External Components
-- d3
+- d3 v3 & v5, d3-tip
 - datamaps
 
 ## Similar Visualizations
