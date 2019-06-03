@@ -4,7 +4,7 @@ Sophie Stiekema - 10992499
 The world population keeps on growing, in 2050 it is expected to rise to 9.7 billion.
 Food is finite and its production has a huge impact on the environment. Production efficiency is key in this regard.
 Not only do many countries produce food for their citizens, but also for their livestock:
-feed.
+feed. It would be interesting to see which countries produce the most food in general, and also which countries produce the most feed. Perhaps focusing more on the production of food, instead of feed, could increase the availability of overall food for humans and decrease overall production and thus the environmental impact.
 
 ## Visualization
 It would be interesting to compare countries in their food production and see where this food goes. Furthermore, this project will give insight in the various types of food produced by each country.
@@ -24,7 +24,7 @@ Although perhaps it is more interesting to see how total food production changed
 ![Linegraph](doc/README-564a4dd3.png)
 
 ## Data
-I will be using data from [Kaggle](https://www.kaggle.com/dorbicycle/world-foodfeed-production)
+I will download data from [Kaggle](https://www.kaggle.com/dorbicycle/world-foodfeed-production). This data comes from the Food and Agriculture Organization of the United Nations.
 The data comes in a csv file. I might have to convert this into a JSON file.
 
 ## External Components
