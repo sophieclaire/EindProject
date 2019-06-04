@@ -25,3 +25,9 @@ Furthermore, there will also be a dropdown button to change the year. I have dat
 
 ## Overview
 ![Project idea](doc/README-189d12f3.png)
+
+## Coding
+
+Each graph has its own js file.
+Since there is so much data, the data will be split up in one json file per country as the pie chart and the bar chart only need data for one country.
+For the world map I will create a json file with the countries' names and total production amount per year.
