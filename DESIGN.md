@@ -24,7 +24,7 @@ Furthermore, there will also be a dropdown button to change the year. I have dat
 ![Slider](doc/DESIGN-c9e29cf8.png)
 
 As a second interactive element I would like to implement a header on top of the page with several buttons for different pages. There will be a page containing the introduction, where the problem is explained. And a page containing the visualizations. Perhaps there will also be a page discussing individual contribution, or what one can do to decrease consumption.  
-This will be implemented using bootstrap. 
+This will be implemented using bootstrap.
 
 ## Overview
 ![Project idea](doc/README-189d12f3.png)
@@ -34,7 +34,7 @@ Each graph will have its own javascript file:
 - map.js
 - pie.js
 - bar.js
-
+Furthermore I will have a main.js, a project.html and a project.css file.
 Since there is so much data, the data will be split up in one json file per country as the pie chart and the bar chart only need data for one country. This will speed up the updating of the charts since less data is loaded accordingly.
 For the world map I will create a json file with the countries' names and total production amount per year.
 These files will be in the folder data.
