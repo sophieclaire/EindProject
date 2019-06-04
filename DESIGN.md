@@ -17,6 +17,7 @@ When the user clicks on a certain country, a pie chart appears showing the distr
 ![Pie Chart](doc/DESIGN-24c31615.png)
 
 When the user clicks on a part of the pie chart, a bar chart appears displaying all the food (or feed) items and how much of each is produced.
+
 ![Bar Chart](doc/DESIGN-66413aab.png)
 
 Furthermore, there will also be a dropdown button to change the year. I have data from 1961 until 2013.
