@@ -22,3 +22,6 @@ When the user clicks on a part of the pie chart, a bar chart appears displaying 
 
 Furthermore, there will also be a dropdown button to change the year. I have data from 1961 until 2013.
 ![Slider](doc/DESIGN-c9e29cf8.png)
+
+## Overview
+![Project idea](doc/README-189d12f3.png)
