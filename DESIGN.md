@@ -10,9 +10,11 @@ The data shows, per country:
 ## Components
 First of all a world map will be displayed portraying the amount of overall food produced per country, this amount will be calculated by adding up the production amounts of each food per country.
 Light green will mean low production whereas dark green will mean high production. When the user hovers over a certain country, a little popup will display the country's name and overall production.
-To implement this I will need [datamaps](https://github.com/markmarkoh/datamaps)
+To implement this I will need [datamaps](https://github.com/markmarkoh/datamaps).
 ![World Map](doc/DESIGN-263c476e.png)
+
 When the user clicks on a certain country, a pie chart appears showing the distribution of food versus feed.
 ![Pie Chart](doc/DESIGN-24c31615.png)
+
 When the user clicks on a part of the pie chart, a bar chart appears displaying all the food (or feed) items and how much of each is produced.
 ![Bar Chart](doc/DESIGN-66413aab.png)
