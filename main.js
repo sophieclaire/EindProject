@@ -21,5 +21,7 @@ function jscode() {
 
         drawmap(json, dataset, palette_scale);
         drawpiechart();
+        //drawbarchart();
+
     });
 }
