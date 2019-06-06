@@ -9,17 +9,22 @@ with open(in_file_path,'r') as data:
     #dict.to_dict()
     #print(dict.type)
 
+
     for country in dict:
-        print(country)
+        #print(country)
         #yearly_production = {}
+        data = json.loads(dict[country])
         if country == 'NLD':
+            print(data[0])
+            print(len(data))
+
             print("NLD NLD")
             print("\n\n")
-            print(dict[country])
         filename=country+'.json'
         path = 'data/[filename]'
         filePathNameWExt = './data/' + filename
 
         with open(filePathNameWExt, 'w') as out_json_file:
             # Save each obj to their respective filepath
-            json.dump(dict[country], out_json_file, indent=4)
+            #for i in range(len(data)):
+            json.dump(data, out_json_file, indent=4)
