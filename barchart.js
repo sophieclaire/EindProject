@@ -2,7 +2,7 @@ window.onload = drawbarchart();
 
 function drawbarchart() {
 
-  fetch("data/NLD.json")
+  fetch("data/IND.json")
     .then(response => response.json())
     .then(nld => {
         console.log(nld)
@@ -20,31 +20,48 @@ function drawbarchart() {
              }
         }
         console.log(dataset)
+        var result = Object.values(dataset).sort(function(a, b) {
+                  return dataset[b] - dataset[a];
+                })
+        console.log(result)
 
 
     //     console.log(Object.keys(dataset))
     //     console.log(Object.values(dataset).amount)
     //
     // console.log(dataset)
-    stuff(dataset);
+    bar(dataset);
 })
 }
-function stuff(dataset) {
+function bar(dataset) {
 
 
   // set dimensions
-  var margin = {top: 70, right: 20, bottom: 120, left: 50},
+  var margin = {top: 70, right: 20, bottom: 120, left: 200},
       w = 900 - margin.left - margin.right,
-      h = 450 - margin.top - margin.bottom,
+      h = 950 - margin.top - margin.bottom,
       barPadding = 1;
 
-  // set x & y scales & axes
-  var xScale = d3v5.scaleBand()
-                  .range([0, w ])
-                  .padding(.01)
+  var minValue = Math.min.apply(null, Object.values(dataset)),
+      maxValue = Math.max.apply(null, Object.values(dataset));
 
-  var yScale = d3v5.scaleLinear()
+for (i = 0; i < dataset.length; i++){
+  dataset.sort(function(a, b) {
+         return a - b;
+       });
+   }
+
+  // set x & y scales & axes
+  var yScale = d3v5.scaleBand()
+                  .domain(d3v5.range(dataset.length))
                   .range([h, 0])
+                  .padding(.1)
+
+  var xScale = d3v5.scaleLinear()
+                  .domain([0, maxValue])
+                  .range([0, w])
+
+
 
   var yAxis = d3v5.axisLeft(yScale),
       xAxis = d3v5.axisBottom(xScale);
@@ -70,37 +87,35 @@ function stuff(dataset) {
 
 
 
-
-  var minValue = Math.min.apply(null, Object.values(dataset)),
-      maxValue = Math.max.apply(null, Object.values(dataset));
       var palettescale = d3v5.scaleSequential()
         .domain([minValue,maxValue])
         .interpolator(d3v5.interpolateGnBu);
 
     // set the domains
-    xScale.domain(Object.keys(dataset))
-    yScale.domain([0, maxValue]);
+    yScale.domain(Object.keys(dataset))
+    xScale.domain([0, maxValue]);
 
   // draw the bars
   svg.selectAll("bar")
       .data(Object.values(dataset))
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d,i) {
-        return xScale(Object.keys(dataset)[i]);
+      .attr("y", function(d,i) {
+        return yScale(Object.keys(dataset)[i]);
         })
-      .attr("y", function(d) {
-        return yScale(d);
+      .attr("x", function(d) {
+        return xScale(d3v5.range(d.length));
         })
-    .attr("width", xScale.bandwidth())
-    .attr("height", function(d) {
-        return h - yScale(d);
+    .attr("height", yScale.bandwidth())
+    .attr("width", function(d) {
+        return xScale(d);
         })
     .attr("fill", function(d, i) {
       return palettescale(Object.values(dataset)[i]);
     })
     .on('mouseover', tip.show)
     .on('mouseout', tip.hide);
+
 
     // add y-axis
     svg.append("g")
@@ -137,4 +152,5 @@ function stuff(dataset) {
         .style("text-decoration", "underline")
         .style("font-style", "italic")
         .text("Food categories");
+
 }
