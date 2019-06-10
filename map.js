@@ -81,9 +81,11 @@
         // update barchart when clicking on country
         done: function(map) {
           map.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
-            for(let i = 0, j = Object.keys(data).length; i < j; i++) {
-              if (geography.properties.name == Object.values(data)[i].Country) {
-                  update(dataset, geography.properties.name, paletteScale);
+            for(let i = 0, j = Object.keys(dataset).length; i < j; i++) {
+              if (geography.id == Object.keys(dataset)[i]) {
+                  console.log("same")
+                  console.log(geography.properties.name)
+                  drawbarchart(geography.id, paletteScale);
                 }
               else {
                 continue;

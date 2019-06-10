@@ -1,6 +1,15 @@
 window.onload = drawbarchart();
 
-function drawbarchart() {
+function drawbarchart(id) {
+
+    const testFolder = './data/';
+    const fs = require('fs');
+
+    fs.readdir(testFolder, (err, files) => {
+      files.forEach(file => {
+        console.log(file);
+      });
+    });
 
   fetch("data/BEL.json")
     .then(response => response.json())
@@ -148,7 +157,7 @@ for (i = 0; i < dataset.length; i++){
      .append("text")
         .attr("class", "x label")
         .attr("y", 0 - 2 * margin.left )
-        .attr("x", 0 - h /2 )
+        .attr("x", 0 - hs /2 )
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .style("fill", "black")
