@@ -85,7 +85,8 @@
               if (geography.id == Object.keys(dataset)[i]) {
                   console.log("same")
                   console.log(geography.properties.name)
-                  drawbarchart(geography.id, paletteScale);
+                  drawpiechart(geography.id, geography.properties.name)
+                  drawbarchart(geography.id);
                 }
               else {
                 continue;
@@ -97,9 +98,9 @@
                .attr("x", 320)
                .attr("y", 15 )
                .attr("text-anchor", "middle")
-               .style("font-size", "16px")
-               .style("text-decoration", "underline")
-               .style("font-style", "italic")
+               .style("font-size", "20px")
+              // .style("text-decoration", "underline")
+               //.style("font-style", "italic")
                .text("Food production around the world");
         }
       });

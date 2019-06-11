@@ -1,17 +1,11 @@
-window.onload = drawbarchart();
+//window.onload = drawbarchart();
 
 function drawbarchart(id) {
 
-    const testFolder = './data/';
-    const fs = require('fs');
+    var countryfilename = 'data/' + [id] + '.json'
+    console.log(countryfilename)
 
-    fs.readdir(testFolder, (err, files) => {
-      files.forEach(file => {
-        console.log(file);
-      });
-    });
-
-  fetch("data/BEL.json")
+  fetch(countryfilename)
     .then(response => response.json())
     .then(nld => {
         console.log(nld)
@@ -42,10 +36,13 @@ function drawbarchart(id) {
     //     console.log(Object.values(dataset).amount)
     //
     // console.log(dataset)
+
     bar(dataset);
 })
 }
 function bar(dataset) {
+
+    d3v5.select("#bars").remove();
 
 
   // set dimensions
@@ -92,6 +89,7 @@ for (i = 0; i < dataset.length; i++){
               .append("svg")
               .attr("width", w + margin.left + margin.right)
               .attr("height", h + margin.bottom + margin.top)
+              .attr("id","bars")
             .append("g")
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
