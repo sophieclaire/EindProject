@@ -16,7 +16,18 @@ Today we started off with our standup meeting. Everyone made a to-do list. I sti
 
 ## Day 5
 My group gave me the advice to change the orientation of my barchart. It would be better to put the type of food on the y axis, as that would be easier to read. Furthermore, maybe I should change the color scheme as right now a specfic type of food seems to be linked to a country if the color is the same. I also got the advice to add a button to change the order of the data within the barchart. So perhaps ascending, descending and alphabetical.
+![before](doc/PROCESS-bbff4312.png)
+![after](doc/PROCESS-ad55025b.png)
 
 ## Day 6
 I was able to link the piechart to the barchart. Now when you click on a country just the piechart appears, and then when clicking on one part of the piechart, the bargraph appears.
 I also changed the color scheme, I wanted to use colors similar to those of crops.  
+Furthemore, I added bootstrap to have a navugation bar at the top.
+![before](doc/PROCESS-0460fda6.png)
+![after](doc/PROCESS-f4856dfb.png)
+
+## Day 7
+Today I implemented a dropdown to change years. In the beginning some years did not work with the paletteScale for the fillcolor, this was because a minimum and maximum value was not calculated from the values, this was because there were still undefined values in the array. After removing those it worked. The dropdown now works and when a new year is selected, everything is reset.
+![Dropdown](doc/PROCESS-88012e72.png)
+There is just an issue with the standard option:
+![emptymap](doc/PROCESS-83626a3f.png)

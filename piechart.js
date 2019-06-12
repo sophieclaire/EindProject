@@ -1,14 +1,14 @@
 
-    function drawpiechart(id, name){
+    function drawpiechart(id, name, year){
 
         var countryfilename = 'data/' + [id] + '.json'
-        console.log(countryfilename)
+        //console.log(countryfilename)
 
         fetch(countryfilename)
           .then(response => response.json())
           .then(country => {
-              console.log(country)
-              console.log(country.length)
+              //console.log(country)
+              //console.log(country.length)
               var piedata1 = {
                   "type" : "Food",
                   "amount" : 0
@@ -30,8 +30,8 @@
           piedata2["amount"] = Math.round(piedata2["amount"] / country.length * 100);
 
           var piedata = [piedata1, piedata2];
-          console.log(piedata)
-          console.log(country.length)
+          //console.log(piedata)
+          //console.log(country.length)
 
         // this is the data
         //var data = [{"letter":"q","presses":1},{"letter":"w","presses":5},{"letter":"e","presses":2}];
@@ -53,7 +53,7 @@
         // Set up the pie chart
         var pie = d3v5.pie()
             	.value(function(d) {
-                    console.log(d.amount)
+                    //console.log(d.amount)
                     return d.amount; })(piedata);
 
         // Set the arcs for the chart and the labels with inner & outer radii
@@ -113,8 +113,9 @@
 
             svg.selectAll(".arc")
               .on("click", function(d) {
-                  console.log(d.data.type)
-                  drawbarchart(id, name, d.data.type);
+                  //console.log(d.data.type)
+                  console.log(country)
+                  drawbarchart(country, id, name, d.data.type, year);
               });
         })
     }

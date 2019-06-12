@@ -20,9 +20,16 @@
          return element !== undefined;
       });
 
+
       // create color palette
       var onlyValues = replacekey.map(function(obj){ return obj[1][year]; });
       console.log(onlyValues)
+
+      // remove undefined vales
+      onlyValues = onlyValues.filter(function( element ) {
+         return element !== undefined;
+      });
+
       var minValue = Math.min.apply(Math, onlyValues),
           maxValue = Math.max.apply(Math, onlyValues);
         console.log(minValue, maxValue)
@@ -30,7 +37,6 @@
       var paletteScale = d3v5.scaleSequential()
             .domain([minValue, maxValue / 2])
             .interpolator(d3v5.interpolateBuGn);
-    console.log(replacekey)
 
       // fill datasets
       var dataset = {};
@@ -43,7 +49,7 @@
             var country = item[2];
         dataset[countrycode] = { Production: index, fillColor: paletteScale(index), country : country };
       });
-      console.log(dataset)
+      //console.log(dataset)
 
     var variables = [dataset, paletteScale]
     return variables;
@@ -52,7 +58,7 @@
     function drawmap(data, dataset, paletteScale) {
 
       // draw map
-      console.log(dataset)
+      //console.log(dataset)
       var map = new Datamap({
         element: document.getElementById('container'),
         scope : 'world',
@@ -91,9 +97,9 @@
           map.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
             for(let i = 0, j = Object.keys(dataset).length; i < j; i++) {
               if (geography.id == Object.keys(dataset)[i]) {
-                  console.log("same")
-                  console.log(geography.properties.name)
-                  drawpiechart(geography.id, geography.properties.name)
+                  //console.log("same")
+                  //console.log(geography.properties.name)
+                  drawpiechart(geography.id, geography.properties.name, year)
                   d3v5.select("#bars").remove();
                   //drawbarchart(geography.id, geography.properties.name);
                 }

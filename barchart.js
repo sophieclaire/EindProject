@@ -1,44 +1,25 @@
-//window.onload = drawbarchart();
 
-function drawbarchart(id, name, type) {
+function drawbarchart(countrydata, id, name, type, year) {
 
-    var countryfilename = 'data/' + [id] + '.json'
-    console.log(countryfilename)
-
-  fetch(countryfilename)
-    .then(response => response.json())
-    .then(nld => {
-        console.log(nld)
-        nld.sort(function(a, b) {
-              return d3v5.ascending(a.Y2013, b.Y2013)
+        countrydata.sort(function(a, b) {
+              return d3v5.ascending(a[year], b[year])
             })
-        console.log(nld)
+        console.log(countrydata)
         var dataset = {}
 
-        for (i = 0; i < nld.length; i ++) {
-             if (nld[i].Element == type) {
-                 if (nld[i].Y1961 == 0) {
+        for (var i = 0; i < countrydata.length; i ++) {
+             if (countrydata[i].Element == type) {
+                 if (countrydata[i][year] == 0) {
                      continue
                  }
                  else {
-                     dataset[nld[i].Item] = nld[i].Y2013
+                     dataset[countrydata[i].Item] = countrydata[i][year]
                  };
              }
         }
-        console.log(dataset)
-        var result = Object.values(dataset).sort(function(a, b) {
-                  return dataset[b] - dataset[a];
-                })
-        console.log(result)
-
-
-    //     console.log(Object.keys(dataset))
-    //     console.log(Object.values(dataset).amount)
-    //
-    // console.log(dataset)
 
     bar(dataset, name, type);
-})
+
 }
 function bar(dataset, name, type) {
 
@@ -54,11 +35,7 @@ function bar(dataset, name, type) {
   var minValue = Math.min.apply(null, Object.values(dataset)),
       maxValue = Math.max.apply(null, Object.values(dataset));
 
-for (i = 0; i < dataset.length; i++){
-  dataset.sort(function(a, b) {
-         return a - b;
-       });
-   }
+      console.log(dataset)
 
   // set x & y scales & axes
   var yScale = d3v5.scaleBand()
