@@ -16,3 +16,7 @@ Today we started off with our standup meeting. Everyone made a to-do list. I sti
 
 ## Day 5
 My group gave me the advice to change the orientation of my barchart. It would be better to put the type of food on the y axis, as that would be easier to read. Furthermore, maybe I should change the color scheme as right now a specfic type of food seems to be linked to a country if the color is the same. I also got the advice to add a button to change the order of the data within the barchart. So perhaps ascending, descending and alphabetical.
+
+## Day 6
+I was able to link the piechart to the barchart. Now when you click on a country just the piechart appears, and then when clicking on one part of the piechart, the bargraph appears.
+I also changed the color scheme, I wanted to use colors similar to those of crops.  

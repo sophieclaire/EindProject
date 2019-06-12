@@ -1,9 +1,10 @@
 
-    function transformdata(json) {
+
+    function transformdata(json, year) {
 
       // pair up countries from both datasets
       var countries = Datamap.prototype.worldTopo.objects.world.geometries;
-      console.log(countries)
+      //console.log(countries)
       let replacekey = Object.keys(json).map((key) => {
         for (var i = 0, j = countries.length; i < j; i++) {
           if (countries[i].id == key){
@@ -20,22 +21,29 @@
       });
 
       // create color palette
-      var onlyValues = replacekey.map(function(obj){ return obj[1].Y2013; });
-      var minValue = Math.min.apply(null, onlyValues),
-          maxValue = Math.max.apply(null, onlyValues);
+      var onlyValues = replacekey.map(function(obj){ return obj[1][year]; });
+      console.log(onlyValues)
+      var minValue = Math.min.apply(Math, onlyValues),
+          maxValue = Math.max.apply(Math, onlyValues);
+        console.log(minValue, maxValue)
 
       var paletteScale = d3v5.scaleSequential()
-            .domain([minValue,maxValue])
-            .interpolator(d3v5.interpolateGnBu);
+            .domain([minValue, maxValue / 2])
+            .interpolator(d3v5.interpolateBuGn);
+    console.log(replacekey)
 
       // fill datasets
       var dataset = {};
-      replacekey.forEach(function(item){ //
+
+      replacekey.forEach(function(item){
         var countrycode = item[0],
-            index = Math.round(item[1].Y2013),
-            country = item[2];
+            index = Math.round(item[1][year]);
+            //console.log(index)
+            //console.log(paletteScale(index))
+            var country = item[2];
         dataset[countrycode] = { Production: index, fillColor: paletteScale(index), country : country };
       });
+      console.log(dataset)
 
     var variables = [dataset, paletteScale]
     return variables;
@@ -48,14 +56,14 @@
       var map = new Datamap({
         element: document.getElementById('container'),
         scope : 'world',
-        fills: { defaultFill: '#F5F5F5'},
+        fills: { defaultFill: '#e6e6e6'},
         data: dataset,
 
         // set colors for hovering
         geographyConfig : {
           highlightOnHover : true,
-          highlightFillColor: 'lightgoldenrodyellow',
-          Opacity : 0.8,
+          highlightFillColor: '#e6fff5',
+          Opacity : 0.5,
           highlightBorderColor: 'darkgrey',
           highlightBorderWidth: 1,
           highlightBorderOpacity: 1,
@@ -78,7 +86,7 @@
             }
         },
 
-        // update barchart when clicking on country
+        // update piechart when clicking on country
         done: function(map) {
           map.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
             for(let i = 0, j = Object.keys(dataset).length; i < j; i++) {
@@ -86,7 +94,8 @@
                   console.log("same")
                   console.log(geography.properties.name)
                   drawpiechart(geography.id, geography.properties.name)
-                  drawbarchart(geography.id);
+                  d3v5.select("#bars").remove();
+                  //drawbarchart(geography.id, geography.properties.name);
                 }
               else {
                 continue;
@@ -115,9 +124,9 @@
       var keys = ["< 150,000", " ", "", "  ", "    ", "     ", "      ", "> 3,000,000"];
       var color = d3v5.scaleOrdinal()
           .domain(keys)
-          .range(d3v5.schemeGnBu[8]);
+          .range(d3v5.schemeGnBu[9]);
 
-      // create legend
+      // create legend -- change to LINEARGRADIENT
       var legend = d3v5.select("div#container").append("svg")
             .attr("class", "legend")
             .attr("width", w + margin.left + margin.right)
@@ -153,7 +162,7 @@
                .attr("y", 60 )
                .attr("text-anchor", "middle")
                .style("font-size", "16px")
-               .style("font-style", "italic")
+               .style("font-style", "bold")
                .style("font-size", "120%")
                .text("Index");
       }

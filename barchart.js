@@ -1,6 +1,6 @@
 //window.onload = drawbarchart();
 
-function drawbarchart(id) {
+function drawbarchart(id, name, type) {
 
     var countryfilename = 'data/' + [id] + '.json'
     console.log(countryfilename)
@@ -16,7 +16,7 @@ function drawbarchart(id) {
         var dataset = {}
 
         for (i = 0; i < nld.length; i ++) {
-             if (nld[i].Element == "Food") {
+             if (nld[i].Element == type) {
                  if (nld[i].Y1961 == 0) {
                      continue
                  }
@@ -37,10 +37,10 @@ function drawbarchart(id) {
     //
     // console.log(dataset)
 
-    bar(dataset);
+    bar(dataset, name, type);
 })
 }
-function bar(dataset) {
+function bar(dataset, name, type) {
 
     d3v5.select("#bars").remove();
 
@@ -98,8 +98,8 @@ for (i = 0; i < dataset.length; i++){
 
 
       var palettescale = d3v5.scaleSequential()
-        .domain([minValue,maxValue])
-        .interpolator(d3v5.interpolateGnBu);
+        .domain([minValue, maxValue])
+        .interpolator(d3v5.interpolateBuGn);
 
     // set the domains
     yScale.domain(Object.keys(dataset))
@@ -126,6 +126,16 @@ for (i = 0; i < dataset.length; i++){
     .on('mouseover', tip.show)
     .on('mouseout', tip.hide);
 
+    // add title
+    svg.append("text")
+        .attr("x", (w / 2))
+        .attr("y", 0 - (margin.top / 2 ))
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .style("font-style", "bold")
+        .text(type + " categories in " + name);
+
 
     // add y-axis
     svg.append("g")
@@ -140,7 +150,7 @@ for (i = 0; i < dataset.length; i++){
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .style("fill", "black")
-        .text("Food produced");
+        .text(type + " categories");
 
     // add x-axis
     svg.append("g")
@@ -151,24 +161,18 @@ for (i = 0; i < dataset.length; i++){
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", "-.55em")
-      .attr("transform", "rotate(-90)" )
-     .append("text")
-        .attr("class", "x label")
-        .attr("y", 0 - 2 * margin.left )
-        .attr("x", 0 - hs /2 )
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .style("fill", "black")
-        .text("Amount produced in tonnes");
+      .attr("transform", "rotate(-90)" );
 
-    // add title
-    svg.append("text")
-        .attr("x", (w / 2))
-        .attr("y", 0 - (margin.top / 2 ))
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("text-decoration", "underline")
-        .style("font-style", "bold")
-        .text("Food categories");
+      svg.append("text")
+        .call(xAxis)
+         .attr("class", "x label")
+         .attr("y", 0 - 2 * margin.left )
+         .attr("x", 0 - h /2 )
+         .attr("dy", "1em")
+         .style("text-anchor", "middle")
+         .style("fill", "black")
+         .text("Amount produced in tonnes");
+
+
 
 }

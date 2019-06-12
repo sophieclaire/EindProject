@@ -3,6 +3,30 @@ Sophie Stiekema,
 10992499,
 */
 
+body {
+  padding-left: 20px;
+}
+/*--- navigation bar ---*/
+.nav {
+    height: 40px;
+}
+.nav a{
+    color: white !important;
+    font-size: 2em !important;
+    font-family: 'Cabin';
+    }
+.navbar {
+    margin-left: -20px;
+   background:#000AAF;
+}
+
+
+
+
+body {
+    background-color: white !important;
+}
+
 .legend {
   position: absolute;
   top: 20px;
@@ -17,7 +41,7 @@ Sophie Stiekema,
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   /* Creates a small triangle extender for the tooltip */

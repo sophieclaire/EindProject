@@ -10,11 +10,11 @@
               console.log(country)
               console.log(country.length)
               var piedata1 = {
-                  "type" : "food",
+                  "type" : "Food",
                   "amount" : 0
               }
               var piedata2 = {
-                  "type" : "feed",
+                  "type" : "Feed",
                   "amount": 0
               };
               for (i = 0; i < country.length; i ++) {
@@ -26,8 +26,12 @@
                    }
               }
           //console.log(piedata)
+          piedata1["amount"] = Math.round(piedata1["amount"] / country.length * 100)
+          piedata2["amount"] = Math.round(piedata2["amount"] / country.length * 100);
+
           var piedata = [piedata1, piedata2];
           console.log(piedata)
+          console.log(country.length)
 
         // this is the data
         //var data = [{"letter":"q","presses":1},{"letter":"w","presses":5},{"letter":"e","presses":2}];
@@ -44,7 +48,7 @@
         // Set the color scheme
         var color = d3v5.scaleOrdinal()
                         .domain(piedata)
-                        .range(d3v5.schemeGnBu[8]);
+                        .range(d3v5.schemeBuGn[7]);
 
         // Set up the pie chart
         var pie = d3v5.pie()
@@ -61,6 +65,14 @@
             .outerRadius(r - 100)
               .innerRadius(r - 40);
 
+      //create tip
+      var tip = d3v5.tip()
+          .attr('class', 'd3-tip')
+          .offset([-10, 0])
+          .html(function(d) {
+            return "<span style='color:lavender'>" + d.value + "</span> <strong>%</strong>";
+            })
+
      // Select the svg and append the pie
       var svg = d3v5.select("#piechart")
         .append("svg")
@@ -70,6 +82,8 @@
         .append("g")
         .attr("transform", "translate(" + w / 2 + "," + h / 1.5 +")");
 
+        svg.call(tip);
+
         var g = svg.selectAll("arc")
             .data(pie)
             .enter().append("g")
@@ -77,7 +91,9 @@
 
         g.append("path")
             .attr("d", arc)
-            .style("fill", function(d) { return color(d.data.type);});
+            .style("fill", function(d) { return color(d.data.type);})
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
 
         // Add labels
         g.append("text")
@@ -94,5 +110,11 @@
             //.style("text-decoration", "underline")
             .style("font-style", "bold")
             .text("Food v Feed for " + [name] );
+
+            svg.selectAll(".arc")
+              .on("click", function(d) {
+                  console.log(d.data.type)
+                  drawbarchart(id, name, d.data.type);
+              });
         })
     }
