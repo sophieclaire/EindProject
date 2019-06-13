@@ -4,11 +4,14 @@ Sophie Stiekema,
 This file creates a world map and a barchart
 */
 var year = 'Y2013'
+jscode(year)
 
 
-function updateyear(e) {
+function updateyear(e)
+{
     var year = e.value
        console.log(year)
+       d3v5.select('#gradientlegend').remove();
        d3v5.select("#bars").remove();
        d3v5.select("#pies").remove();
        d3v5.select("svg.datamap").remove();
@@ -16,8 +19,6 @@ function updateyear(e) {
    };
 
 function jscode(year) {
-
-
   fetch("map_data.json")
     .then(response => response.json())
     .then(json => {

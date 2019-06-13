@@ -1,20 +1,21 @@
 
+
 function drawbarchart(countrydata, id, name, type, year) {
 
         countrydata.sort(function(a, b) {
-              return d3v5.ascending(a[year], b[year])
-            })
-        console.log(countrydata)
-        var dataset = {}
+              return d3v5.ascending(a[year], b[year]);
+            });
+        //console.log(countrydata)
+        var dataset = {};
 
         for (var i = 0; i < countrydata.length; i ++) {
              if (countrydata[i].Element == type) {
                  if (countrydata[i][year] == 0) {
-                     continue
+                     continue;
                  }
                  else {
-                     dataset[countrydata[i].Item] = countrydata[i][year]
-                 };
+                     dataset[countrydata[i].Item] = countrydata[i][year];
+                 }
              }
         }
 
@@ -35,17 +36,17 @@ function bar(dataset, name, type) {
   var minValue = Math.min.apply(null, Object.values(dataset)),
       maxValue = Math.max.apply(null, Object.values(dataset));
 
-      console.log(dataset)
+      console.log(dataset);
 
   // set x & y scales & axes
   var yScale = d3v5.scaleBand()
                   .domain(d3v5.range(dataset.length))
                   .range([h, 0])
-                  .padding(.1)
+                  .padding(0.1);
 
   var xScale = d3v5.scaleLinear()
                   .domain([0, maxValue])
-                  .range([0, w])
+                  .range([0, w]);
 
 
 
@@ -58,7 +59,7 @@ function bar(dataset, name, type) {
       .offset([-10, 0])
       .html(function(d) {
         return "<strong>Amount:</strong> <span style='color:lavender'>" + d + "</span>";
-        })
+        });
 
   //create SVG element
   var svg = d3v5.select("div#barchart")
@@ -79,7 +80,7 @@ function bar(dataset, name, type) {
         .interpolator(d3v5.interpolateBuGn);
 
     // set the domains
-    yScale.domain(Object.keys(dataset))
+    yScale.domain(Object.keys(dataset));
     xScale.domain([0, maxValue]);
 
   // draw the bars
@@ -108,8 +109,8 @@ function bar(dataset, name, type) {
         .attr("x", (w / 2))
         .attr("y", 0 - (margin.top / 2 ))
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("text-decoration", "underline")
+        .style("font-size", "30px")
+        //.style("text-decoration", "underline")
         .style("font-style", "bold")
         .text(type + " categories in " + name);
 
@@ -149,7 +150,6 @@ function bar(dataset, name, type) {
          .style("text-anchor", "middle")
          .style("fill", "black")
          .text("Amount produced in tonnes");
-
 
 
 }

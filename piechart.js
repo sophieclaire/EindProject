@@ -7,7 +7,7 @@
         fetch(countryfilename)
           .then(response => response.json())
           .then(country => {
-              //console.log(country)
+              console.log(country)
               //console.log(country.length)
               var piedata1 = {
                   "type" : "Food",
@@ -30,6 +30,11 @@
           piedata2["amount"] = Math.round(piedata2["amount"] / country.length * 100);
 
           var piedata = [piedata1, piedata2];
+
+          // shorten display name for Congo
+          if (name == "Democratic Republic of the Congo") {
+              name = "DR Congo"
+          }
           //console.log(piedata)
           //console.log(country.length)
 
@@ -41,8 +46,8 @@
 
 
         // Set the width, height and radius
-        var w = 400,
-            h = 400,
+        var w = 350,
+            h = 350,
             r = Math.min(w, h) / 2;
 
         // Set the color scheme
@@ -92,8 +97,14 @@
         g.append("path")
             .attr("d", arc)
             .style("fill", function(d) { return color(d.data.type);})
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
+            .on("mouseover", tip.show)
+            .on('click', function() {
+                d3v5.select(this).style("fill","#00491b");
+            })
+            .on('mouseout', tip.hide)
+            .on('mouseout', function(d) {
+                d3v5.select(this).style("fill", function(d) { return color(d.data.type);})
+            });
 
         // Add labels
         g.append("text")
@@ -103,10 +114,10 @@
 
         // Add title
         g.append("text")
-            .attr("x", (w / 60))
+            .attr("x", (w / 200))
             .attr("y", - .55 * h)
             .attr("text-anchor", "middle")
-            .style("font-size", "20px")
+            .style("font-size", "30px")
             //.style("text-decoration", "underline")
             .style("font-style", "bold")
             .text("Food v Feed for " + [name] );

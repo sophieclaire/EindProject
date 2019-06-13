@@ -31,3 +31,8 @@ Today I implemented a dropdown to change years. In the beginning some years did 
 ![Dropdown](doc/PROCESS-88012e72.png)
 There is just an issue with the standard option:
 ![emptymap](doc/PROCESS-83626a3f.png)
+
+## Day 8
+Today I changed the layout of my page so everything is easier to read.
+![newlayout](doc/PROCESS-52f8c686.png)
+I also added a new gradient legend

@@ -5,6 +5,8 @@ Sophie Stiekema,
 
 body {
   padding-left: 20px;
+  background-color: white;
+
 }
 /*--- navigation bar ---*/
 .nav {
@@ -16,29 +18,46 @@ body {
     font-family: 'Cabin';
     }
 .navbar {
-    margin-left: -20px;
-   background:#000AAF;
+   margin-left: -20px;
+   background:#00491b !important;
+}
+
+.dropdownbutton {
+    position: relative;
+}
+
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#piechart {
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+    display: inline-grid;
+}
+
+#barchart {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline;
+    vertical-align: top;
 }
 
 
-
-
-body {
-    background-color: white !important;
-}
-
-.legend {
-  position: absolute;
-  top: 20px;
-  left: 680px;
-  width: 100px;
-  height: 300px;
+#gradientlegend {
+    margin-top: -100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
   .d3-tip {
     line-height: 1;
     padding: 6px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgb(0, 0, 0);
     color: #fff;
     border-radius: 4px;
     font-size: 20px;
@@ -46,12 +65,10 @@ body {
 
   /* Creates a small triangle extender for the tooltip */
   .d3-tip:after {
-    box-sizing: border-box;
     display: inline;
     font-size: 10px;
-    width: 100%;
     line-height: 1;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgb(0, 0, 0);
     content: "\25BC";
     position: absolute;
     text-align: center;
@@ -85,7 +102,7 @@ body {
    position: absolute;
    background-color: #D6EAF8;
    min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   box-shadow: 0 8px 16px 0 rgb(0,0,0);
    z-index: 1;
  }
 
