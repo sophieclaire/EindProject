@@ -36,3 +36,7 @@ There is just an issue with the standard option:
 Today I changed the layout of my page so everything is easier to read.
 ![newlayout](doc/PROCESS-52f8c686.png)
 I also added a new gradient legend
+We discussed our style.
+
+## Day 9
+Today I got as feedback that I should put my x axis of my barchart at the top, so I changed that. I also changed the hover opacity for each graph. Furthermore I centered the piechart & barhraph. I wanted them side by side but they are too big to fit and I do not want to reduce their size as that would make them less comprehensible.

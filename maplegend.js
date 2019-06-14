@@ -4,14 +4,22 @@ function drawlegend(dataset, paletteScale, minValue, maxValue) {
 
     colorScale = d3v5.scaleSequential(d3v5.interpolateBuGn).domain([0, 42])
 
-    console.log(minValue)
-
-    var w = 1300, h = 60;
+    var w = 1300, h = 160;
     var key = d3v5.select("#container")
       .append("svg")
       .attr("id", "gradientlegend")
       .attr("width", w)
       .attr("height", h);
+
+      key.append("text")
+              .attr("x", (w / 2))
+              .attr("y", h / 2.5 )
+              .attr("text-anchor", "middle")
+              .style("font-size", "20px")
+              //.style("text-decoration", "underline")
+              .style("font-style", "bold")
+              .text("Production in 1,000 tonnes");
+
     var legend = key.append("defs")
       .append("svg:linearGradient")
       .attr("id", "gradient");
@@ -22,11 +30,12 @@ function drawlegend(dataset, paletteScale, minValue, maxValue) {
         .attr("offset", d => d.offset)
         .attr("stop-color", d => d.color);
 
+
     key.append("rect")
       .attr("width", w)
-      .attr("height", h - 30)
+      .attr("height", h - 130)
       .style("fill", "url(#gradient)")
-      .attr("transform", "translate(0,10)");
+      .attr("transform", "translate(0,100)");
 
     var y = d3v5.scaleLinear()
       .range([1300, 0])
@@ -36,7 +45,7 @@ function drawlegend(dataset, paletteScale, minValue, maxValue) {
       .ticks(12);
     key.append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(0,40)")
+      .attr("transform", "translate(0,130)")
       .call(yAxis)
       .append("text")
       .attr("transform", "rotate(-90)")

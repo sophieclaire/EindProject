@@ -25,7 +25,7 @@ function drawbarchart(countrydata, id, name, type, year) {
 function bar(dataset, name, type) {
 
     d3v5.select("#bars").remove();
-
+    document.getElementById('dropdownbutton').style.visibility='visible';
 
   // set dimensions
   var margin = {top: 90, right: 20, bottom: 120, left: 200},
@@ -35,8 +35,6 @@ function bar(dataset, name, type) {
 
   var minValue = Math.min.apply(null, Object.values(dataset)),
       maxValue = Math.max.apply(null, Object.values(dataset));
-
-      console.log(dataset);
 
   // set x & y scales & axes
   var yScale = d3v5.scaleBand()
@@ -49,9 +47,8 @@ function bar(dataset, name, type) {
                   .range([0, w]);
 
 
-
   var yAxis = d3v5.axisLeft(yScale),
-      xAxis = d3v5.axisBottom(xScale);
+      xAxis = d3v5.axisTop(xScale);
 
   //create tip
   var tip = d3v5.tip()
@@ -72,8 +69,6 @@ function bar(dataset, name, type) {
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.call(tip);
-
-
 
       var palettescale = d3v5.scaleSequential()
         .domain([minValue, maxValue])
@@ -107,7 +102,7 @@ function bar(dataset, name, type) {
     // add title
     svg.append("text")
         .attr("x", (w / 2))
-        .attr("y", 0 - (margin.top / 2 ))
+        .attr("y", 0 - (margin.top / 4 ))
         .attr("text-anchor", "middle")
         .style("font-size", "30px")
         //.style("text-decoration", "underline")
@@ -133,13 +128,13 @@ function bar(dataset, name, type) {
     // add x-axis
     svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (h - barPadding) + ")")
+      .attr("transform", "translate(0," + (0 - barPadding / 2) + ")")
       .call(xAxis)
     .selectAll("text")
       .style("text-anchor", "end")
-      .attr("dx", "-.8em")
-      .attr("dy", "-.55em")
-      .attr("transform", "rotate(-90)" );
+      .attr("dx", ".95em")
+      .attr("dy", ".25em")
+      .attr("transform", "translate(0," + (0 - barPadding / 2) + ")", "rotate(-90)" );
 
       svg.append("text")
         .call(xAxis)

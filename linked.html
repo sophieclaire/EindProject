@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Sophie Stiekema,
 10992499,
@@ -63,7 +62,7 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
           <li class="active"><a href="#">GRAPHS</a></li>
           <li><a href="#">DATA</a></li>
           <li><a href="#">FOOD PRODUCTION</a></li>
-          <li><a href="#">ABOUT</a></li>
+          <li><a href="about.html">ABOUT</a></li>
         </ul>
       </div>
     </nav>
@@ -72,7 +71,7 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
 
 <p class="text-info">   by Sophie Stiekema, 10992499;   Data retrieved from <a href="https://www.kaggle.com/dorbicycle/world-foodfeed-production">Kaggle</a></p>
 
-    <p style="font-family:Times;">introduction <br>
+    <p style="font-family:Times;">introduction <br><br>
     </p>
 
     <select id="Year" onchange="updateyear(this)">
@@ -91,11 +90,11 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
       <option value="Y2012">2012</option>
     </select>
 
-        <div id="container" style="position: relative; width: 1300px; height: 800px;"></div>
-        <div id="piechart" style="position: relative; width: 400px; height: 400px;"></div>
+        <div class="figure" id="container" style="position: relative; width: 1300px; height: 600px;"></div>
+        <div class="figure" id="piechart" style="position: relative; width: 600px; height: 450px;"></div>
 
 
-        <div id="barchart" style="position: relative; width: 900px; height: 1250px;"></div>
+        <div class="figure" id="barchart" style="position: relative; width: 900px; height: 1350px;"></div>
 
         <div class="dropdown" id="dropdownbutton">
           <button class="dropbtn">Sort values</button>

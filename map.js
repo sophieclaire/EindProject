@@ -71,9 +71,8 @@
         geographyConfig : {
           highlightOnHover : true,
           highlightFillColor: dataset,
-          Opacity : 0,
           highlightBorderColor: 'dimgrey',
-          highlightBorderWidth: 1.8,
+          highlightBorderWidth: 1,
           highlightBorderOpacity: 1,
 
           // show Production Index in tooltip
@@ -101,6 +100,7 @@
               if (geography.id == Object.keys(dataset)[i]) {
                   //console.log("same")
                   //console.log(geography.properties.name)
+                  document.getElementById('dropdownbutton').style.visibility='hidden';
                   drawpiechart(geography.id, geography.properties.name, year)
                   d3v5.select("#bars").remove();
                   //drawbarchart(geography.id, geography.properties.name);
@@ -113,12 +113,12 @@
           // add title
           map.svg.append('text')
                .attr("x", 750)
-               .attr("y", 30 )
+               .attr("y", 22 )
                .attr("text-anchor", "middle")
-               .style("font-size", "40px")
+               .style("font-size", "30px")
               // .style("text-decoration", "underline")
                //.style("font-style", "italic")
-               .text("Food production around the world in " + actualyear);
+               .text("World production in " + actualyear);
         }
       });
       drawlegend(dataset, paletteScale, minValue, maxValue);

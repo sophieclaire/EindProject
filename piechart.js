@@ -82,8 +82,8 @@
       var svg = d3v5.select("#piechart")
         .append("svg")
         .attr("id","pies")
-        .attr("width", w + 100)
-        .attr("height", h + 100)
+        .attr("width", w + 250)
+        .attr("height", h + 150)
         .append("g")
         .attr("transform", "translate(" + w / 2 + "," + h / 1.5 +")");
 
@@ -92,19 +92,14 @@
         var g = svg.selectAll("arc")
             .data(pie)
             .enter().append("g")
+            .attr("transform", "translate(" + w / 3 + "," + h / 10 +")")
             .attr("class", "arc");
 
         g.append("path")
             .attr("d", arc)
             .style("fill", function(d) { return color(d.data.type);})
             .on("mouseover", tip.show)
-            .on('click', function() {
-                d3v5.select(this).style("fill","#00491b");
-            })
-            .on('mouseout', tip.hide)
-            .on('mouseout', function(d) {
-                d3v5.select(this).style("fill", function(d) { return color(d.data.type);})
-            });
+            .on('mouseout', tip.hide);
 
         // Add labels
         g.append("text")
