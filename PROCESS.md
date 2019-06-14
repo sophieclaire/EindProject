@@ -29,14 +29,18 @@ Furthemore, I added bootstrap to have a navugation bar at the top.
 ## Day 7
 Today I implemented a dropdown to change years. In the beginning some years did not work with the paletteScale for the fillcolor, this was because a minimum and maximum value was not calculated from the values, this was because there were still undefined values in the array. After removing those it worked. The dropdown now works and when a new year is selected, everything is reset.
 ![Dropdown](doc/PROCESS-88012e72.png)
+
 There is just an issue with the standard option:
+
 ![emptymap](doc/PROCESS-83626a3f.png)
 
 ## Day 8
 Today I changed the layout of my page so everything is easier to read.
 ![newlayout](doc/PROCESS-52f8c686.png)
-I also added a new gradient legend
+
+I also added a new gradient legend!
 We discussed our style.
 
 ## Day 9
 Today I got as feedback that I should put my x axis of my barchart at the top, so I changed that. I also changed the hover opacity for each graph. Furthermore I centered the piechart & barhraph. I wanted them side by side but they are too big to fit and I do not want to reduce their size as that would make them less comprehensible.
+![newbar](doc/PROCESS-b7c0cd7b.png)
