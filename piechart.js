@@ -35,15 +35,18 @@
           if (name == "Democratic Republic of the Congo") {
               name = "DR Congo"
           }
-          //console.log(piedata)
-          //console.log(country.length)
 
-        // this is the data
-        //var data = [{"letter":"q","presses":1},{"letter":"w","presses":5},{"letter":"e","presses":2}];
-        //console.log(data);
+          //if no piechart yet
+          if( $('#piechart.figure').is(':empty')) {
+            newpiechart(country, piedata, id, name, year)
+        }
+            else{
+            updatepiechart(country, piedata, id, name, year)
+        }
+    })
+}
 
-        d3v5.select("#pies").remove();
-
+    function newpiechart(country, piedata, id, name, year){
 
         // Set the width, height and radius
         var w = 350,
@@ -56,7 +59,7 @@
                         .range(d3v5.schemeBuGn[7]);
 
         // Set up the pie chart
-        var pie = d3v5.pie()
+         var pie = d3v5.pie()
             	.value(function(d) {
                     //console.log(d.amount)
                     return d.amount; })(piedata);
@@ -85,7 +88,7 @@
         .attr("width", w + 250)
         .attr("height", h + 150)
         .append("g")
-        .attr("transform", "translate(" + w / 2 + "," + h / 1.5 +")");
+        .attr("transform", "translate(" + w / 2 + "," + h /1.2 +")");
 
         svg.call(tip);
 
@@ -113,15 +116,44 @@
             .attr("y", - .55 * h)
             .attr("text-anchor", "middle")
             .style("font-size", "30px")
-            //.style("text-decoration", "underline")
-            .style("font-style", "bold")
+            .style("fill", "#00491b")
+            .style("font-family", "Palatino")
             .text("Food v Feed for " + [name] );
 
+            // Draw barchart when clicking on an slice
             svg.selectAll(".arc")
               .on("click", function(d) {
-                  //console.log(d.data.type)
-                  console.log(country)
                   drawbarchart(country, id, name, d.data.type, year);
               });
-        })
     }
+
+    function updatepiechart(country, piedata, id, name, year) {
+        var pie = d3v5.pie()
+               .value(function(d) {
+                   return d.amount; })(piedata);
+        // new angles
+        path = d3v5.select("#piechart.figure").selectAll("path").data(pie);
+        // redraw arcs
+        path.transition().duration(750).attrTween("d", arcTween);
+
+        d3v5.select("#piechart").selectAll(".arc")
+          .on("click", function(d) {
+              drawbarchart(country, id, name, d.data.type, year);
+    })
+}
+
+    function arcTween(a) {
+    var w = 350,
+        h = 350,
+        r = Math.min(w, h) / 2;
+
+    var arc = d3v5.arc()
+        .outerRadius(r - 10)
+        .innerRadius(0);
+
+  var i = d3v5.interpolate(this._current, a);
+  this._current = i(0);
+  return function(t) {
+    return arc(i(t));
+  };
+}

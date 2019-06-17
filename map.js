@@ -118,6 +118,8 @@
                .style("font-size", "30px")
               // .style("text-decoration", "underline")
                //.style("font-style", "italic")
+               .style("fill", "#00491b")
+               .style("font-family", "Palatino")
                .text("World production in " + actualyear);
         }
       });

@@ -3,7 +3,7 @@
 function drawbarchart(countrydata, id, name, type, year) {
 
         countrydata.sort(function(a, b) {
-              return d3v5.ascending(a[year], b[year]);
+            return d3v5.ascending(a[year], b[year]);
             });
         //console.log(countrydata)
         var dataset = {};
@@ -29,7 +29,7 @@ function bar(dataset, name, type) {
 
   // set dimensions
   var margin = {top: 90, right: 20, bottom: 120, left: 200},
-      w = 900 - margin.left - margin.right,
+      w = 1300 - margin.left - margin.right,
       h = 1100 - margin.top - margin.bottom,
       barPadding = 1;
 
@@ -105,8 +105,8 @@ function bar(dataset, name, type) {
         .attr("y", 0 - (margin.top / 4 ))
         .attr("text-anchor", "middle")
         .style("font-size", "30px")
-        //.style("text-decoration", "underline")
-        .style("font-style", "bold")
+        .style("fill", "#00491b")
+        .style("font-family", "Palatino")
         .text(type + " categories in " + name);
 
 

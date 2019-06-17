@@ -44,3 +44,17 @@ We discussed our style.
 ## Day 9
 Today I got as feedback that I should put my x axis of my barchart at the top, so I changed that. I also changed the hover opacity for each graph. Furthermore I centered the piechart & barhraph. I wanted them side by side but they are too big to fit and I do not want to reduce their size as that would make them less comprehensible.
 ![newbar](doc/PROCESS-b7c0cd7b.png)
+
+## Day 10
+
+I fixed China's problem! So the barchart wasn't ordering itself in an ascending manner whereas the data had been sorted. My mentor figured out that the problem was that there were duplicate items in the dataset, for example sweet potatoes appeared 8 times. I removed all the duplicates and now it works perfectly.
+![chinabefore](doc/PROCESS-957c02b3.png)
+![chinaafter](doc/PROCESS-b4d3aa5d.png)
+
+I also changed the banner a bit and added some text to my page.
+![banner](doc/PROCESS-052ad215.png)
+
+Up until now I was deleting the svg and redrawing a graph when a variable changed. I created an update function for my piechart where the data gets updated and there is a nice transition.
+This week I want to do the same for updating the map, it would be nice to be able to slide over the years and see the colors in the map change.
+I want to implement the button for ascending/descending order for the barchart.
+I also want to make the website prettier, I do not really like the look of it but I am not sure what I want to change. Overall I am proud of what I have achieved so far

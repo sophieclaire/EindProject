@@ -54,24 +54,30 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
   </head>
   <body>
 
-      <nav class="navbar" style="background-color: #0064af;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">GRAPHS</a></li>
-          <li><a href="#">DATA</a></li>
-          <li><a href="#">FOOD PRODUCTION</a></li>
-          <li><a href="about.html">ABOUT</a></li>
+      <nav class="navbar navbar-default" style="background-color: #0064af;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Final Project</a>
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">GRAPHS</a></li>
+                  <li><a href="#">DATA</a></li>
+                  <li><a href="#">FOOD PRODUCTION</a></li>
+                  <li><a href="about.html">ABOUT</a></li>
+
         </ul>
       </div>
+    </div>
     </nav>
 
 <h1> Food production around the World and over the years</h1>
 
 <p class="text-info">   by Sophie Stiekema, 10992499;   Data retrieved from <a href="https://www.kaggle.com/dorbicycle/world-foodfeed-production">Kaggle</a></p>
 
-    <p style="font-family:Times;">introduction <br><br>
+    <p style="font-family:Times;">The world population keeps on growing, in 2050 it is expected to rise to 9.7 billion.
+    Food is finite and its production has a huge impact on the environment. Production efficiency is key in this regard.
+    Not only do many countries produce food for their citizens, but also for their livestock:
+    feed. It would be interesting to see which countries produce the most food in general, and also which countries produce the most feed. Perhaps focusing more on the production of food, instead of feed, could increase the availability of overall food for humans and decrease overall production and thus the environmental impact.
+ <br><br>
     </p>
 
     <select id="Year" onchange="updateyear(this)">
@@ -90,13 +96,13 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
       <option value="Y2012">2012</option>
     </select>
 
-        <div class="figure" id="container" style="position: relative; width: 1300px; height: 600px;"></div>
-        <div class="figure" id="piechart" style="position: relative; width: 600px; height: 450px;"></div>
+        <div class="figure" id="container" style="width: 1300px; height: 600px;"></div>
+        <div class="figure" id="piechart" style="position: relative; width: 600px; height: 550px;"></div>
 
 
         <div class="figure" id="barchart" style="position: relative; width: 900px; height: 1350px;"></div>
 
-        <div class="dropdown" id="dropdownbutton">
+        <div class="dropdown" id="dropdownbutton" style="position: relative;">
           <button class="dropbtn">Sort values</button>
           <div class="dropdown-content">
             <a href="#">Ascending</a>

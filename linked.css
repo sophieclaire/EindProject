@@ -12,10 +12,23 @@ body {
 .nav {
     height: 40px;
 }
+.navbar-brand {
+    /* padding:10px; */
+    color: lightblue;
+    font-size: 2em !important;
+    font-family: 'Cabin';
+    float: left;
+    margin: 10px 15px 15px 10px;
+
+}
+
 .nav a{
     color: white !important;
     font-size: 2em !important;
     font-family: 'Cabin';
+    }
+.nav a:active{
+    background-color: red;
     }
 /* .nav li:active{
 
@@ -24,6 +37,7 @@ body {
    margin-left: -20px;
    background:#00491b !important;
 }
+
 
 .dropdown#dropdownbutton {
     visibility:hidden;
@@ -40,12 +54,14 @@ body {
 
 /* .figure#piechart {
     vertical-align: top;
+}*/
+
+/* .figure#barchart {
+    padding-top:100px;
+} */
+#Year {
+    position: relative;
 }
-
-.figure#barchart {
-    display: inline;
-}  */
-
 .datamaps-subunit {
     opacity: 1;
 }
