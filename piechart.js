@@ -111,14 +111,15 @@
             .style("fill", "#fff");
 
         // Add title
-        g.append("text")
-            .attr("x", (w / 200))
+        svg.append("text")
+            .attr("class","title")
+            .attr("x", (w / 3))
             .attr("y", - .55 * h)
             .attr("text-anchor", "middle")
             .style("font-size", "30px")
             .style("fill", "#00491b")
             .style("font-family", "Palatino")
-            .text("Food v Feed for " + [name] );
+            .text("Food v Feed for " + [name]);
 
             // Draw barchart when clicking on an slice
             svg.selectAll(".arc")
@@ -128,17 +129,25 @@
     }
 
     function updatepiechart(country, piedata, id, name, year) {
+
+        var svg = d3v5.select("#piechart")
+
         var pie = d3v5.pie()
                .value(function(d) {
                    return d.amount; })(piedata);
         // new angles
-        path = d3v5.select("#piechart.figure").selectAll("path").data(pie);
+        path = svg.selectAll("path").data(pie);
+
+        svg.select("text.title").text("Food v Feed for " + [name]);
+
+
         // redraw arcs
         path.transition().duration(750).attrTween("d", arcTween);
 
-        d3v5.select("#piechart").selectAll(".arc")
+        svg.selectAll(".arc")
           .on("click", function(d) {
               drawbarchart(country, id, name, d.data.type, year);
+
     })
 }
 

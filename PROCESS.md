@@ -54,7 +54,13 @@ I fixed China's problem! So the barchart wasn't ordering itself in an ascending 
 I also changed the banner a bit and added some text to my page.
 ![banner](doc/PROCESS-052ad215.png)
 
+## Day 11
+
 Up until now I was deleting the svg and redrawing a graph when a variable changed. I created an update function for my piechart where the data gets updated and there is a nice transition.
 This week I want to do the same for updating the map, it would be nice to be able to slide over the years and see the colors in the map change.
 I want to implement the button for ascending/descending order for the barchart.
 I also want to make the website prettier, I do not really like the look of it but I am not sure what I want to change. Overall I am proud of what I have achieved so far
+
+## Day 12
+
+I also rewrote my barchart file to have it update and not delete and redraw. It has nice transitions now!

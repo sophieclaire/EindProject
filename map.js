@@ -58,8 +58,6 @@
 
         var actualyear = year.replace('Y', '');
 
-        console.log(dataset)
-
       // draw map
       var map = new Datamap({
         element: document.getElementById('container'),
@@ -102,7 +100,7 @@
                   //console.log(geography.properties.name)
                   document.getElementById('dropdownbutton').style.visibility='hidden';
                   drawpiechart(geography.id, geography.properties.name, year)
-                  d3v5.select("#bars").remove();
+                  //d3v5.select("#bars").remove();
                   //drawbarchart(geography.id, geography.properties.name);
                 }
               else {
