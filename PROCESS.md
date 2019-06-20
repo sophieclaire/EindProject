@@ -64,3 +64,7 @@ I also want to make the website prettier, I do not really like the look of it bu
 ## Day 12
 
 I also rewrote my barchart file to have it update and not delete and redraw. It has nice transitions now!
+
+## Day 13
+
+I fixed the hover of my datamap which was hovering too high above. The problem was that the div of the map had an absolute position and so the hoverinfo was taking a fixed position relative to the main page. When I changed the map's div to relative, the hover pop up worked fine. I also removed a bug that a pie chart appeared hen clicking on a country that had no data for that year but did have data for another year. 

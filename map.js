@@ -1,4 +1,8 @@
-
+/*
+Sophie Stiekema,
+10992499,
+This file creates a world map
+*/
 
     function transformdata(json, year) {
 
@@ -13,7 +17,6 @@
           }
         }
       })
-      //console.log(replacekey)
 
       // remove countries without data
       replacekey = replacekey.filter(function( element ) {
@@ -23,7 +26,6 @@
 
       // create color palette
       var onlyValues = replacekey.map(function(obj){ return obj[1][year]; });
-      //console.log(onlyValues)
 
       // remove undefined vales
       onlyValues = onlyValues.filter(function( element ) {
@@ -75,14 +77,18 @@
 
           // show Production Index in tooltip
             popupTemplate: function(geo, data) {
-
                 // don't show tooltip if no data for the country
                 if (!data) {
                   return ['<div class="hoverinfo">',
-                      '<br>Production data not available',
+                      '<br>Production data not available for ',
+                      geo.properties.name,,
                       '</div>'].join('');
                     }
-
+                else if (data.Production == null){
+                    return ['<div class="hoverinfo">',
+                        '<br>Production data not available',
+                        '</div>'].join('');
+                }
                 // tooltip content
                 return ['<div class="hoverinfo">',
                     '<strong>', geo.properties.name, '</strong>',
@@ -96,12 +102,11 @@
           map.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
             for(let i = 0, j = Object.keys(dataset).length; i < j; i++) {
               if (geography.id == Object.keys(dataset)[i]) {
-                  //console.log("same")
-                  //console.log(geography.properties.name)
                   document.getElementById('dropdownbutton').style.visibility='hidden';
-                  drawpiechart(geography.id, geography.properties.name, year)
-                  //d3v5.select("#bars").remove();
-                  //drawbarchart(geography.id, geography.properties.name);
+                  if (!isNaN(dataset[geography.id].Production)) {
+                      drawpiechart(geography.id, geography.properties.name, year)
+                  }
+
                 }
               else {
                 continue;

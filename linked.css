@@ -43,21 +43,20 @@ body {
     visibility:hidden;
 }
 
-/* .figure {
+.figure {
     margin-left: auto;
     margin-right: auto;
 }
 .figure#container {
-    top:-66px;
-    display: block;
-} */
+    /* top:-66px; */
+    /* display: block; */
+}
 
 /* .figure#piechart {
     vertical-align: top;
 }*/
 
 /* .figure#barchart {
-    padding-top:100px;
 } */
 #Year {
     position: relative;

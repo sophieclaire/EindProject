@@ -6,9 +6,8 @@
 
         fetch(countryfilename)
           .then(response => response.json())
-          .then(country => {
-              console.log(country)
-              //console.log(country.length)
+          .then(countrydata => {
+              //console.log(countrydata.length)
               var piedata1 = {
                   "type" : "Food",
                   "amount" : 0
@@ -17,8 +16,8 @@
                   "type" : "Feed",
                   "amount": 0
               };
-              for (i = 0; i < country.length; i ++) {
-                   if (country[i].Element == "Food") {
+              for (i = 0; i < countrydata.length; i ++) {
+                   if (countrydata[i].Element == "Food") {
                        piedata1["amount"] +=1
                    }
                    else {
@@ -26,27 +25,35 @@
                    }
               }
           //console.log(piedata)
-          piedata1["amount"] = Math.round(piedata1["amount"] / country.length * 100)
-          piedata2["amount"] = Math.round(piedata2["amount"] / country.length * 100);
+          piedata1["amount"] = Math.round(piedata1["amount"] / countrydata.length * 100)
+          piedata2["amount"] = Math.round(piedata2["amount"] / countrydata.length * 100);
 
           var piedata = [piedata1, piedata2];
 
-          // shorten display name for Congo
+          // shorten display name for long names
           if (name == "Democratic Republic of the Congo") {
               name = "DR Congo"
+          }
+          else if (name == "United States of America") {
+              name = "the USA"
+          }
+          else if (name == "United Republic of Tanzania") {
+              name = "Tazania"
           }
 
           //if no piechart yet
           if( $('#piechart.figure').is(':empty')) {
-            newpiechart(country, piedata, id, name, year)
+            newpiechart(countrydata, piedata, id, name, year)
+            //drawbarchart(countrydata, id, name, 'Food', year);
         }
             else{
-            updatepiechart(country, piedata, id, name, year)
+            $('#barchart').empty()
+            updatepiechart(countrydata, piedata, id, name, year)
         }
     })
 }
 
-    function newpiechart(country, piedata, id, name, year){
+    function newpiechart(countrydata, piedata, id, name, year){
 
         // Set the width, height and radius
         var w = 350,
@@ -110,6 +117,8 @@
             .text(function(d) { return d.data.type;})
             .style("fill", "#fff");
 
+        var actualyear = year.replace('Y', '');
+
         // Add title
         svg.append("text")
             .attr("class","title")
@@ -119,16 +128,16 @@
             .style("font-size", "30px")
             .style("fill", "#00491b")
             .style("font-family", "Palatino")
-            .text("Food v Feed for " + [name]);
+            .text("Food v Feed for " + [name] + " in " + [actualyear]);
 
             // Draw barchart when clicking on an slice
             svg.selectAll(".arc")
               .on("click", function(d) {
-                  drawbarchart(country, id, name, d.data.type, year);
+                  drawbarchart(countrydata, id, name, d.data.type, year);
               });
     }
 
-    function updatepiechart(country, piedata, id, name, year) {
+    function updatepiechart(countrydata, piedata, id, name, year) {
 
         var svg = d3v5.select("#piechart")
 
@@ -138,15 +147,16 @@
         // new angles
         path = svg.selectAll("path").data(pie);
 
-        svg.select("text.title").text("Food v Feed for " + [name]);
+        var actualyear = year.replace('Y', '');
 
+        svg.select("text.title").text("Food v Feed for " + [name] + " in " + [actualyear]);
 
         // redraw arcs
         path.transition().duration(750).attrTween("d", arcTween);
 
         svg.selectAll(".arc")
           .on("click", function(d) {
-              drawbarchart(country, id, name, d.data.type, year);
+              drawbarchart(countrydata, id, name, d.data.type, year);
 
     })
 }
