@@ -1,7 +1,6 @@
 
 function drawlegend(dataset, paletteScale, minValue, maxValue) {
 
-
     colorScale = d3v5.scaleSequential(d3v5.interpolateBuGn).domain([0, 42])
 
     var w = 1300, h = 160;

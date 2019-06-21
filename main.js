@@ -11,10 +11,9 @@ jscode(year)
 function updateyear(e)
 {
     var year = e.value
-       console.log(year)
        d3v5.select('#gradientlegend').remove();
        $('#barchart').empty()
-       document.getElementById('dropdownbutton').style.visibility='hidden';
+       document.getElementById('sortbutton').style.visibility='hidden';
        d3v5.select("#pies").remove();
        d3v5.select("svg.datamap").remove();
        jscode(year)

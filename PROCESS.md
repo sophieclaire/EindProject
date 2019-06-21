@@ -67,4 +67,10 @@ I also rewrote my barchart file to have it update and not delete and redraw. It 
 
 ## Day 13
 
-I fixed the hover of my datamap which was hovering too high above. The problem was that the div of the map had an absolute position and so the hoverinfo was taking a fixed position relative to the main page. When I changed the map's div to relative, the hover pop up worked fine. I also removed a bug that a pie chart appeared hen clicking on a country that had no data for that year but did have data for another year. 
+I fixed the hover of my datamap which was hovering too high above. The problem was that the div of the map had an absolute position and so the hoverinfo was taking a fixed position relative to the main page. When I changed the map's div to relative, the hover pop up worked fine. I also removed a bug that a pie chart appeared hen clicking on a country that had no data for that year but did have data for another year.
+
+## Day 14
+
+During the standup meeting we looked at each others' websites and gave feedback. We also looked at code.
+I implemented a button today to change the sorting order of the barchart, it can be ascending or descending.
+I also changed the background color as a gradient, it starts blue to mimic the sea below the world map. Then it gets green so that the lighter bars can be seen in the barchart,  

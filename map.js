@@ -69,6 +69,8 @@ This file creates a world map
 
         // set colors for hovering
         geographyConfig : {
+          borderColor: 'cadetblue',
+          borderOpacity: 0.5,
           highlightOnHover : true,
           highlightFillColor: dataset,
           highlightBorderColor: 'dimgrey',
@@ -102,7 +104,7 @@ This file creates a world map
           map.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
             for(let i = 0, j = Object.keys(dataset).length; i < j; i++) {
               if (geography.id == Object.keys(dataset)[i]) {
-                  document.getElementById('dropdownbutton').style.visibility='hidden';
+                  document.getElementById('sortbutton').style.visibility='hidden';
                   if (!isNaN(dataset[geography.id].Production)) {
                       drawpiechart(geography.id, geography.properties.name, year)
                   }

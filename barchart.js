@@ -1,25 +1,22 @@
+function changeorder()
+{
+    counter +=1;
+    drawbarchart(bardata.data, bardata.id,  bardata.name, bardata.type, bardata.year);
+}
 
+function drawbarchart(countrydata, id, name, type, year, order) {
 
-function drawbarchart(countrydata, id, name, type, year) {
-
-    // // Create the button
-    // var button = document.createElement("button");
-    // button.innerHTML = "Change order";
-    //
-    // // Append
-    // var body = document.getElementById("barchart");
-    // body.appendChild(button);
-    //
-    // // 3. Add event handler
-    // button.addEventListener ("click", function() {
-    //     countrydata.sort(function(a, b) {
-    //         return d3v5.descending(a[year], b[year]);
-    //         });;
-    // });
         // sort data
-        countrydata.sort(function(a, b) {
-            return d3v5.ascending(a[year], b[year]);
-            });
+        if (counter % 2 == 0) {
+            countrydata.sort(function(a, b) {
+                return d3v5.descending(a[year], b[year]);
+                });
+            }
+        else {
+            countrydata.sort(function(a, b) {
+                return d3v5.ascending(a[year], b[year]);
+                });
+        }
         //console.log(countrydata)
         var dataset = {};
 
@@ -45,7 +42,21 @@ function drawbarchart(countrydata, id, name, type, year) {
 
 function bar(dataset, name, year, type) {
 
-    document.getElementById('dropdownbutton').style.visibility='visible';
+    document.getElementById('sortbutton').style.visibility='visible'
+
+    $(document).ready(function(){
+      $(".dropdown").on("hide.bs.dropdown", function(){
+        $(".btn").html('Dropdown <span class="caret"></span>')
+    });
+      $(".dropdown").on("show.bs.dropdown", function(){
+        $(".btn").html('Dropdown <span class="caret caret-up"></span>')
+        .click(newbarchart(dataset, name, year, type));
+      });
+      $(".btn").click(function() {
+      alert("Hello");
+      newbarchart(dataset, name, year, type);
+    });
+    });
 
     // set dimensions
     margin = {top: 90, right: 20, bottom: 120, left: 200},
@@ -66,10 +77,9 @@ function bar(dataset, name, year, type) {
     // initialize axes
     yAxis = svg.append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(" + barPadding + ",0)"),
+
     xAxis = svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (0 - barPadding / 2) + ")");
 
     //create tip
      tip = d3v5.tip()
@@ -79,7 +89,7 @@ function bar(dataset, name, year, type) {
             return "<strong>Amount:</strong> <span style='color:lavender'>" + d + "</span>";
             });
 
-    // call funcntion that draws barchart
+    // call function that draws barchart
       newbarchart(dataset, name, year, type)
 }
 
@@ -98,6 +108,7 @@ function newbarchart(dataset, name, year, type)
     var xScale = d3v5.scaleLinear()
                    .domain([0, maxValue])
                    .range([0, w]);
+
 
     // set palette scale for colors
     var palettescale = d3v5.scaleSequential()
@@ -164,7 +175,7 @@ function newbarchart(dataset, name, year, type)
        return yScale(Object.keys(dataset)[i]);
        })
      .attr("x", function(d) {
-       return xScale(d3v5.range(d.length));
+       return xScale(d3v5.range(d.length)) + barPadding;
        })
       .attr("height", yScale.bandwidth())
       .attr("width", function(d) {

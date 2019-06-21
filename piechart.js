@@ -68,7 +68,6 @@
         // Set up the pie chart
          var pie = d3v5.pie()
             	.value(function(d) {
-                    //console.log(d.amount)
                     return d.amount; })(piedata);
 
         // Set the arcs for the chart and the labels with inner & outer radii
@@ -133,6 +132,8 @@
             // Draw barchart when clicking on an slice
             svg.selectAll(".arc")
               .on("click", function(d) {
+                  counter = 1
+                  bardata = {data: countrydata, id: id, name: name, type: d.data.type, year: year}
                   drawbarchart(countrydata, id, name, d.data.type, year);
               });
     }
@@ -156,6 +157,8 @@
 
         svg.selectAll(".arc")
           .on("click", function(d) {
+              counter = 1
+              bardata = {data: countrydata, id: id, name: name, type: d.data.type, year: year}
               drawbarchart(countrydata, id, name, d.data.type, year);
 
     })

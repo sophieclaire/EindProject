@@ -52,12 +52,12 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
     <title> Life Quality </title>
 
   </head>
-  <body>
+  <body id="graphs">
 
       <nav class="navbar navbar-default" style="background-color: #0064af;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">Final Project</a>
+                <li><a class="navbar-brand" href="linked.html">Final Project</a><li>
                 <ul class="nav navbar-nav">
                   <li class="active"><a href="#">GRAPHS</a></li>
                   <li><a href="#">DATA</a></li>
@@ -98,16 +98,9 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
 
         <div class="figure" id="container" style="position: relative; width: 1300px; height: 600px;"></div>
         <div class="figure" id="piechart" style="position: relative; width: 600px; height: 550px;"></div>
+        <button id="sortbutton" onclick="changeorder()">Change sorting order</button>
         <div class="figure" id="barchart" style="position: relative; width: 1300px; height: 1350px;"></div>
 
-        <div class="dropdown" id="dropdownbutton" style="position: relative;">
-          <button class="dropbtn">Sort values</button>
-          <div class="dropdown-content">
-            <a href="#">Ascending</a>
-            <a href="#">Descending</a>
-            <a href="#">Alphabetical</a>
-          </div>
-        </div>
 
         <script src="bootstrap/js/bootstrap.min.js"></script>
 
