@@ -73,4 +73,9 @@ I fixed the hover of my datamap which was hovering too high above. The problem w
 
 During the standup meeting we looked at each others' websites and gave feedback. We also looked at code.
 I implemented a button today to change the sorting order of the barchart, it can be ascending or descending.
-I also changed the background color as a gradient, it starts blue to mimic the sea below the world map. Then it gets green so that the lighter bars can be seen in the barchart,  
+I also changed the background color as a gradient, it starts blue to mimic the sea below the world map. Then it gets green so that the lighter bars can be seen in the barchart.
+
+## Day 15
+
+Today I changed the colors a bit, by changing the color scheme used for the map, it is now easier to see discrepancies between countries.  I also cleaned up code and added comments here and there.
+![newcolors](doc/PROCESS-b460a862.png)

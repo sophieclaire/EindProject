@@ -3,29 +3,36 @@ Sophie Stiekema,
 10992499,
 This file sets the year and calls the world map
 */
-var year = 'Y2013'
 
-jscode(year)
+// Set initial year
+var year = 'Y2013';
 
+// Call function that fetches and transfroms the data
+startfunction(year);
 
+// Function that updates the year when the button is pressed
 function updateyear(e)
 {
-    var year = e.value
+    var year = e.value;
+        // Remove graphs
        d3v5.select('#gradientlegend').remove();
-       $('#barchart').empty()
+       $('#barchart').empty();
        document.getElementById('sortbutton').style.visibility='hidden';
        d3v5.select("#pies").remove();
        d3v5.select("svg.datamap").remove();
-       jscode(year)
-   };
+       // Get new data & redraw map
+       startfunction(year);
+   }
 
-function jscode(year) {
-  fetch("map_data.json")
-    .then(response => response.json())
-    .then(json => {
-        var dataset = transformdata(json, year)[0]
-        var palette_scale = transformdata(json, year)[1]
-        drawmap(json, dataset, palette_scale, year);
-
+// Function that fetches and transfroms the data
+function startfunction(year)
+{
+    fetch("map_data.json")
+        .then(response => response.json())
+        .then(json => {
+            var data = transformdata(json, year);
+            var dataset = data[0];
+            var palette_scale = data[1];
+            drawmap(json, dataset, palette_scale, year);
     });
 }

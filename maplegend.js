@@ -1,7 +1,14 @@
+/*
+Sophie Stiekema,
+10992499,
+This file draws a gradientlegend for the world map
+*/
 
-function drawlegend(dataset, paletteScale, minValue, maxValue) {
+// This function draws the gradient legend for the worldmap
+function drawlegend(dataset, paletteScale, minValue, maxValue)
+{
 
-    colorScale = d3v5.scaleSequential(d3v5.interpolateBuGn).domain([0, 42])
+    colorScale = d3v5.scaleSequential(d3v5.interpolateGnBu).domain([0, 42])
 
     var w = 1300, h = 160;
     var key = d3v5.select("#container")
@@ -12,12 +19,13 @@ function drawlegend(dataset, paletteScale, minValue, maxValue) {
 
       key.append("text")
               .attr("x", (w / 2))
-              .attr("y", h / 2.5 )
+              .attr("y", h / 1.9 )
               .attr("text-anchor", "middle")
               .style("font-size", "20px")
-              //.style("text-decoration", "underline")
+              .style("fill", "#073983")
+              .style("font-family", "Georgia")
               .style("font-style", "bold")
-              .text("Production in 1,000 tonnes");
+              .text("Food production in 1,000 tonnes");
 
     var legend = key.append("defs")
       .append("svg:linearGradient")
@@ -43,7 +51,7 @@ function drawlegend(dataset, paletteScale, minValue, maxValue) {
       .scale(y)
       .ticks(12);
     key.append("g")
-      .attr("class", "y axis")
+      .attr("class", "y-axis")
       .attr("transform", "translate(0,130)")
       .call(yAxis)
       .append("text")

@@ -1,105 +1,107 @@
+/*
+Sophie Stiekema
+10992499
+This file creates a barchart and updates it.
+It lso includes a button that changes the sorting order of the barchart.
+*/
+
+// This function is called when the button to change the barchart order is pressed
 function changeorder()
 {
+    // Keep track of whether the barchart is ascending or descending
     counter +=1;
+
+    // Update the barchart
     drawbarchart(bardata.data, bardata.id,  bardata.name, bardata.type, bardata.year);
 }
 
-function drawbarchart(countrydata, id, name, type, year, order) {
+function drawbarchart(countrydata, id, name, type, year, order)
+{
 
-        // sort data
-        if (counter % 2 == 0) {
-            countrydata.sort(function(a, b) {
-                return d3v5.descending(a[year], b[year]);
-                });
-            }
-        else {
-            countrydata.sort(function(a, b) {
-                return d3v5.ascending(a[year], b[year]);
-                });
-        }
-        //console.log(countrydata)
-        var dataset = {};
-
-        for (var i = 0; i < countrydata.length; i ++) {
-             if (countrydata[i].Element == type) {
-                 if (countrydata[i][year] == 0) {
-                     continue;
-                 }
-                 else {
-                     dataset[countrydata[i].Item] = countrydata[i][year];
-                 }
-             }
-        }
-
-        //if no barchart yet
-        if( $('#barchart').is(':empty')) {
-            bar(dataset, name, year, type);
-        }
-          else{
-          newbarchart(dataset, name, year, type)
-        }
-}
-
-function bar(dataset, name, year, type) {
-
-    document.getElementById('sortbutton').style.visibility='visible'
-
-    $(document).ready(function(){
-      $(".dropdown").on("hide.bs.dropdown", function(){
-        $(".btn").html('Dropdown <span class="caret"></span>')
-    });
-      $(".dropdown").on("show.bs.dropdown", function(){
-        $(".btn").html('Dropdown <span class="caret caret-up"></span>')
-        .click(newbarchart(dataset, name, year, type));
-      });
-      $(".btn").click(function() {
-      alert("Hello");
-      newbarchart(dataset, name, year, type);
-    });
-    });
-
-    // set dimensions
-    margin = {top: 90, right: 20, bottom: 120, left: 200},
-      w = 1300 - margin.left - margin.right,
-      h = 1100 - margin.top - margin.bottom,
-      barPadding = 1;
-
-      //create SVG element
-      svg = d3v5.select("div#barchart")
-              //.attr("class", "graph")
-              .append("svg")
-              .attr("width", w + margin.left + margin.right)
-              .attr("height", h + margin.bottom + margin.top)
-              .attr("id","bars")
-            .append("g")
-              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    // initialize axes
-    yAxis = svg.append("g")
-      .attr("class", "y axis")
-
-    xAxis = svg.append("g")
-      .attr("class", "x axis")
-
-    //create tip
-     tip = d3v5.tip()
-          .attr('class', 'd3-tip')
-          .offset([-10, 0])
-          .html(function(d) {
-            return "<strong>Amount:</strong> <span style='color:lavender'>" + d + "</span>";
+    // Sort the data descending
+    if (counter % 2 == 0) {
+        countrydata.sort(function(a, b) {
+            return d3v5.descending(a[year], b[year]);
             });
+        }
+    // Sort the data ascending
+    else {
+        countrydata.sort(function(a, b) {
+            return d3v5.ascending(a[year], b[year]);
+            });
+    }
 
-    // call function that draws barchart
-      newbarchart(dataset, name, year, type)
+    var dataset = {};
+
+    // Fill the dataset with feed or food elements of that year
+    for (var i = 0; i < countrydata.length; i ++) {
+         if (countrydata[i].Element == type) {
+             // Skip elements with no production
+             if (countrydata[i][year] == 0) {
+                 continue;
+             }
+             else {
+                 dataset[countrydata[i].Item] = countrydata[i][year];
+             }
+         }
+    }
+
+    // If no barchart has been drawn yet
+    if( $('#barchart').is(':empty')) {
+        newbarchart(dataset, name, year, type);
+    }
+      else{
+      updatebarchart(dataset, name, year, type);
+    }
 }
 
 function newbarchart(dataset, name, year, type)
 {
 
+    // Show the sorting button
+    document.getElementById('sortbutton').style.visibility='visible';
+
+    // Set dimensions
+    margin = {top: 90, right: 20, bottom: 120, left: 200},
+      w = 1300 - margin.left - margin.right,
+      h = 1100 - margin.top - margin.bottom,
+      barPadding = 1;
+
+    // Create SVG element
+    svg = d3v5.select("div#barchart")
+              .append("svg")
+                 .attr("width", w + margin.left + margin.right)
+                 .attr("height", h + margin.bottom + margin.top)
+                 .attr("id","bars")
+             .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Initialize the axes
+    yAxis = svg.append("g")
+                .attr("class", "y axis");
+
+    xAxis = svg.append("g")
+                .attr("class", "x axis");
+
+    // Create tip
+     tip = d3v5.tip()
+              .attr('class', 'd3-tip')
+              .offset([-10, 0])
+              .html(function(d) {
+                return "<strong>Amount: </strong>" + d3v5.format(",")(d) + "</span>";
+                });
+
+    // Call function that draws the barchart
+      updatebarchart(dataset, name, year, type);
+}
+
+function updatebarchart(dataset, name, year, type)
+{
+    // Calculate the min & max values
     var minValue = Math.min.apply(null, Object.values(dataset)),
         maxValue = Math.max.apply(null, Object.values(dataset));
 
-    // set x & y scales & axes
+    // Set x & y scales
     var yScale = d3v5.scaleBand()
                    .domain(d3v5.range(dataset.length))
                    .range([h, 0])
@@ -109,19 +111,19 @@ function newbarchart(dataset, name, year, type)
                    .domain([0, maxValue])
                    .range([0, w]);
 
-
-    // set palette scale for colors
+    // Set the palette scale for colors
     var palettescale = d3v5.scaleSequential()
         .domain([minValue, maxValue])
-        .interpolator(d3v5.interpolateBuGn);
+        .interpolator(d3v5.interpolateGnBu);
 
-    // set the domains
+    // Set the domains
     yScale.domain(Object.keys(dataset));
     xScale.domain([0, maxValue]);
 
-    // update y-axis
+    // Update y-axis
     yAxis.transition().duration(1000)
-        .call(d3v5.axisLeft(yScale))
+        .attr("class", "axis")
+        .call(d3v5.axisLeft(yScale));
 
     yAxis.selectAll("text.y-label").remove();
 
@@ -132,13 +134,14 @@ function newbarchart(dataset, name, year, type)
         .attr("x", 0 - h /2 )
         .attr("dy", "1em")
         .style("text-anchor", "middle")
-        .style("fill", "black")
+        .style("fill", "MintCream")
         .style("font-size", "20px")
         .text(type + " categories");
 
-    // update x-axis
+    // Update x-axis
     xAxis.transition().duration(1000)
-        .call(d3v5.axisTop(xScale))
+        .attr("class", "axis")
+        .call(d3v5.axisTop(xScale));
 
     xAxis.selectAll("text")
           .style("text-anchor", "end")
@@ -154,17 +157,17 @@ function newbarchart(dataset, name, year, type)
          .attr("x", h * 1.05)
          .attr("dy", "1em")
          .style("text-anchor", "middle")
-         .style("fill", "black")
+         .style("fill", "MintCream")
          .style("font-size", "20px")
          .text("Amount produced in tonnes");
 
-         svg.call(tip);
-
+    // Call tip
+    svg.call(tip);
 
     var u = svg.selectAll("rect")
-                .data(Object.values(dataset))
+                .data(Object.values(dataset));
 
-    // draw new bars
+    // Draw new bars
     u.enter()
      .append("rect")
      .attr("class", "bar")
@@ -183,27 +186,26 @@ function newbarchart(dataset, name, year, type)
            })
       .attr("fill", function(d, i) {
          return palettescale(Object.values(dataset)[i]);
-       })
+       });
 
-       // tip
-       svg.selectAll("rect").on('mouseover', tip.show)
-         .on('mouseout', tip.hide)
+    // Set tip
+    svg.selectAll("rect").on('mouseover', tip.show)
+                         .on('mouseout', tip.hide);
 
-    // remove unneeded bars
-    u.exit().remove()
+    // Remove unneeded bars
+    u.exit().remove();
 
     var actualyear = year.replace('Y', '');
 
-    // update title
+    // Update title
     svg.select("text.title").remove();
     svg.append("text")
         .attr("class","title")
-        .attr("x", (w / 2))
+        .attr("x", (w / 2.5))
         .attr("y", -65)
         .attr("text-anchor", "middle")
         .style("font-size", "30px")
-        .style("fill", "#00491b")
-        .style("font-family", "Palatino")
+        .style("fill", "#e6fceb")
+        .style("font-family", "Helvetica Neue")
         .text([actualyear] + " " + [type] + " production in " + [name]);
-
     }

@@ -2,55 +2,58 @@
 Sophie Stiekema,
 10992499,
 */
-
+/*--- General ---*/
 body {
   padding-left: 20px;
-  /* background-color: #708090 !important; */
-  /* background: linear-gradient(white, MediumSeaGreen); */
 }
-
-#graphs {
+.page#graphs {
     background: linear-gradient(powderblue, MediumSeaGreen);
 }
-
-#about {
-    background: linear-gradient(white, MediumSeaGreen, white) fixed;
-
+.page#about {
+    background: linear-gradient(powderblue, MediumSeaGreen) fixed;
 }
-/*--- navigation bar ---*/
+
+/*--- Navigation bar ---*/
 .nav {
     height: 40px;
 }
 .navbar-brand {
-    /* padding:10px; */
     color: #E4FFE4;
-    font-size: 2em !important;
+    font-size: 2em;
     font-family: 'Cabin';
     float: left;
-    margin: 25px 15px 0px 10px;
+    margin: 25px 15px 0 10px;
 }
-
 .nav a{
     color: white !important;
-    font-size: 2em !important;
+    font-size: 2em;
     font-family: 'Cabin';
     }
 .nav a:active{
     background-color: red;
     }
-/* .nav li:active{
-
-} */
 .navbar {
    margin-left: -20px;
-   background:#00491b !important;
+   background:#073983;
 }
 
-
-#sortbutton {
-    visibility:hidden;
+/*--- Text styling ---*/
+.header {
+    color: #e6fceb;
+    text-shadow: 3px 4px #073983;
+}
+.title {
+    text-shadow: 3px 3px #073983;
+}
+.text-intro {
+    margin-top: 20px;
+    margin-right: 20px;
+    color: azure;
+    font-family: Georgia;
+    font-size: 18px;
 }
 
+/*--- Figure positioning ---*/
 .figure {
     margin-left: auto;
     margin-right: auto;
@@ -60,14 +63,27 @@ body {
     /* display: block; */
 }
 
-/* .figure#piechart {
-    vertical-align: top;
-}*/
-
-/* .figure#barchart {
-} */
-#Year {
+/*--- Button styling ---*/
+.button#Year {
     position: relative;
+    width: 10%;
+    background-color: #e6fceb;
+    color: black;
+    border: 2px solid #073983;
+}
+.button#sortbutton {
+    visibility:hidden;
+    position: relative;
+    width: 10%;
+    background-color: #e6fceb;
+    color: MidnightBlue;
+    border: 2px solid #073983;
+}
+
+/*--- Datamap styling ---*/
+.hoverinfo{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+     color: #073983;
 }
 .datamaps-subunit {
     opacity: 1;
@@ -75,21 +91,28 @@ body {
 .datamaps-subunit:hover {
     opacity: 0.7;
 }
-
-.arc {
-    opacity: 1;
-}
-.arc:hover {
-    opacity: 0.7;
-}
-
-.bar {
-    opacity: 1;
-}
-.bar:hover {
-    opacity: 0.7;
-}
-
+.d3-tip {
+    line-height: 1;
+    padding: 6px;
+    background: #e6fceb;
+    color: #073983;
+    border-radius: 4px;
+    font-size: 20px;
+  }
+.d3-tip:after {
+    display: inline;
+    font-size: 10px;
+    line-height: 1;
+    color: #e6fceb;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+.d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
 #gradientlegend {
     margin-top: -100px;
     margin-left: auto;
@@ -97,68 +120,27 @@ body {
     display: block;
 }
 
-  .d3-tip {
-    line-height: 1;
-    padding: 6px;
-    background: rgb(0, 0, 0);
-    color: #fff;
-    border-radius: 4px;
-    font-size: 20px;
-  }
+/*--- Graph hover styling ---*/
+.arc {
+    opacity: 1;
+}
+.arc:hover {
+    opacity: 0.7;
+}
+.bar {
+    opacity: 1;
+}
+.bar:hover {
+    opacity: 0.7;
+}
 
-  /* Creates a small triangle extender for the tooltip */
-  .d3-tip:after {
-    display: inline;
-    font-size: 10px;
-    line-height: 1;
-    color: rgb(0, 0, 0);
-    content: "\25BC";
-    position: absolute;
-    text-align: center;
-  }
-
-  /* Style northward tooltips specifically */
-  .d3-tip.n:after {
-    margin: -2px 0 0 0;
-    top: 100%;
-    left: 0;
-  }
-
-  /* Dropdown Button */
- .dropbtn {
-   background-color: #2471A3;
-   color: white;
-   padding: 16px;
-   font-size: 16px;
-   border: none;
- }
-
- /* The container <div> - needed to position the dropdown content */
- .dropdown {
-   position: relative;
-   display: inline-block;
- }
-
- /* Dropdown Content (Hidden by Default) */
- .dropdown-content {
-   display: none;
-   position: absolute;
-   background-color: #D6EAF8;
-   min-width: 160px;
-   box-shadow: 0 8px 16px 0 rgb(0,0,0);
-   z-index: 1;
- }
-
- /* Links inside the dropdown */
- .dropdown-content a {
-   color: black;
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
- }
-
- /* Change color of dropdown links on hover */
- .dropdown-content a:hover {background-color: #D5F5E3;}
-
- /* Show the dropdown menu on hover */
- .dropdown:hover .dropdown-content {display: block;}
+/*--- Barchart styling ---*/
+.axis line{
+  stroke: LightCyan;
+}
+.axis path{
+  stroke: LightCyan;
+}
+.axis text{
+  fill: #e6fceb;
+}
