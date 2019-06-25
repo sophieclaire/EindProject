@@ -79,3 +79,7 @@ I also changed the background color as a gradient, it starts blue to mimic the s
 
 Today I changed the colors a bit, by changing the color scheme used for the map, it is now easier to see discrepancies between countries.  I also cleaned up code and added comments here and there.
 ![newcolors](doc/PROCESS-b460a862.png)
+
+## Day 16
+
+I changed the legend of my piechart because when the data was very small for feed the label would not be positioned correctly. Now the legend is outside of the piechart. I also started writing my final report. 

@@ -5,7 +5,7 @@ This file draws a piechart showing the amount of food v the amount of feed
 */
 
 // This function prepares the data and calls the functions for drawing a piechart
-function drawpiechart(id, name, year)
+function drawpiechart(id, name, year, production)
 {
 
     var countryfilename = 'data/' + [id] + '.json'
@@ -26,15 +26,15 @@ function drawpiechart(id, name, year)
       // Count the number of food & feed elements
       for (i = 0; i < countrydata.length; i ++) {
            if (countrydata[i].Element == "Food") {
-               piedata1["amount"] +=1
+               piedata1["amount"] +=countrydata[i][year]
            }
            else {
-               piedata2["amount"] +=1
+               piedata2["amount"] +=countrydata[i][year]
            }
       }
       // Calculate perecnatges
-      piedata1["amount"] = Math.round(piedata1["amount"] / countrydata.length * 100)
-      piedata2["amount"] = Math.round(piedata2["amount"] / countrydata.length * 100);
+      piedata1["amount"] = Math.round(piedata1["amount"] / production * 100)
+      piedata2["amount"] = Math.round(piedata2["amount"] / production * 100);
 
       var piedata = [piedata1, piedata2];
 
@@ -66,7 +66,7 @@ function newpiechart(countrydata, piedata, id, name, year)
 {
 
     // Set the width, height and radius
-    var w = 350,
+        w = 350,
         h = 350,
         r = Math.min(w, h) / 2;
 
@@ -123,10 +123,36 @@ function newpiechart(countrydata, piedata, id, name, year)
         .on('mouseout', tip.hide);
 
     // Add labels
-    g.append("text")
-        .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-        .text(function(d) { return d.data.type;})
+    var rectsize = 50
+    svg.append("rect")
+      .attr("width", rectsize)
+      .attr("height", rectsize)
+      .attr("transform", "translate(" + w / 1.13 + "," + h * .15 +")")
+      .attr('stroke', 'white')
+      .style("fill", function(d) { return color(pie["1"].data.type)});
+
+      svg.append("text")
+          .attr("transform", "translate(" + w / 1.1 + "," + h * .25 +")")
+          .text("Feed")
+          .style("fill", "#fff");
+
+      svg.append("rect")
+        .attr("width", rectsize)
+        .attr("height", rectsize)
+        .attr("transform", "translate(" + w / 1.13 + "," + - .1* h +")")
+        .attr('stroke', 'white')
+        .style("fill", function(d) { return color(pie["0"].data.type)});
+
+    svg.append("text")
+        .attr("transform", "translate(" + w / 1.1 + "," + h * .01 +")")
+        .text("Food")
         .style("fill", "#fff");
+
+
+    // g.append("text")
+    //     .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+    //     .text(function(d) { return d.data.type;})
+    //     .style("fill", "#fff");
 
     var actualyear = year.replace('Y', '');
 
@@ -172,7 +198,9 @@ function updatepiechart(countrydata, piedata, id, name, year)
     // Redraw the arcs
     path.transition().duration(750).attrTween("d", arcTween);
 
-    // Draw barchart when clicking on an slice
+
+
+    // Draw barchart when clicking on a slice
     svg.selectAll(".arc")
       .on("click", function(d) {
           counter = 1
@@ -193,10 +221,6 @@ function arcTween(a)
     var arc = d3v5.arc()
         .outerRadius(r - 10)
         .innerRadius(0);
-
-    var labelArc = d3v5.arc()
-          .outerRadius(r - 80)
-          .innerRadius(r - 40);
 
     var i = d3v5.interpolate(this._current, a);
     this._current = i(0);

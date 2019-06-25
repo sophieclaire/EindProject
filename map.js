@@ -41,7 +41,7 @@ function transformdata(json, year)
             .domain([minValue, maxValue / 2])
             .interpolator(d3v5.interpolateGnBu);
 
-    // Fill the dataset
+    // Fill the dataset with production amounts
     var dataset = {};
 
     replacekey.forEach(function(item){
@@ -108,7 +108,7 @@ function drawmap(data, dataset, paletteScale, year)
               if (geography.id == Object.keys(dataset)[i]) {
                   document.getElementById('sortbutton').style.visibility='hidden';
                   if (!isNaN(dataset[geography.id].Production)) {
-                      drawpiechart(geography.id, geography.properties.name, year);
+                      drawpiechart(geography.id, geography.properties.name, year, dataset[geography.id].Production);
                   }
                 }
               else {

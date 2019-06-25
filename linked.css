@@ -52,6 +52,12 @@ body {
     font-family: Georgia;
     font-size: 18px;
 }
+.data-text {
+    margin-right: 20px;
+    font-size: 15px;
+    font-family: Georgia;
+    line-height:1.5;
+}
 
 /*--- Figure positioning ---*/
 .figure {
