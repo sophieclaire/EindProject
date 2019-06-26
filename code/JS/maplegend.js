@@ -5,10 +5,10 @@ This file draws a gradientlegend for the world map
 */
 
 // This function draws the gradient legend for the worldmap
-function drawlegend(dataset, paletteScale, minValue, maxValue)
+function drawlegend(dataset, minvalue, maxvalue)
 {
     // Set color scale
-    colorScale = d3v5.scaleSequential(d3v5.interpolateGnBu).domain([0, 42])
+    palettescale = d3v5.scaleSequential(d3v5.interpolateGnBu).domain([0, 42])
 
     // Set width and height
     var w = 1300, h = 160;
@@ -37,7 +37,7 @@ function drawlegend(dataset, paletteScale, minValue, maxValue)
       .attr("id", "gradient");
 
     legend.selectAll("stop")
-        .data(colorScale.ticks().map((t, i, n) => ({ offset: `${100*i/n.length}%`, color: colorScale(t) })))
+        .data(palettescale.ticks().map((t, i, n) => ({ offset: `${100*i/n.length}%`, color: palettescale(t) })))
         .enter().append("stop")
         .attr("offset", d => d.offset)
         .attr("stop-color", d => d.color);
@@ -51,14 +51,14 @@ function drawlegend(dataset, paletteScale, minValue, maxValue)
     // Draw axis & ticks
     var y = d3v5.scaleLinear()
       .range([1300, 0])
-      .domain([maxValue, minValue]);
-    var yAxis = d3v5.axisBottom()
+      .domain([maxvalue, minvalue]);
+    var yaxis = d3v5.axisBottom()
       .scale(y)
       .ticks(12);
     key.append("g")
       .attr("class", "y-axis")
       .attr("transform", "translate(0,130)")
-      .call(yAxis)
+      .call(yaxis)
       .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0)

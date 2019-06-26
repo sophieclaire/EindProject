@@ -77,10 +77,10 @@ function newbarchart(dataset, name, year, type)
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Initialize the axes
-    yAxis = svg.append("g")
+    yaxis = svg.append("g")
                 .attr("class", "y axis");
 
-    xAxis = svg.append("g")
+    xaxis = svg.append("g")
                 .attr("class", "x axis");
 
     // Create tip
@@ -98,36 +98,36 @@ function newbarchart(dataset, name, year, type)
 function updatebarchart(dataset, name, year, type)
 {
     // Calculate the min & max values
-    var minValue = Math.min.apply(null, Object.values(dataset)),
-        maxValue = Math.max.apply(null, Object.values(dataset));
+    var minvalue = Math.min.apply(null, Object.values(dataset)),
+        maxvalue = Math.max.apply(null, Object.values(dataset));
 
     // Set x & y scales
-    var yScale = d3v5.scaleBand()
+    var yscale = d3v5.scaleBand()
                    .domain(d3v5.range(dataset.length))
                    .range([h, 0])
                    .padding(0.08);
 
-    var xScale = d3v5.scaleLinear()
-                   .domain([0, maxValue])
+    var xscale = d3v5.scaleLinear()
+                   .domain([0, maxvalue])
                    .range([0, w]);
 
     // Set the palette scale for colors
     var palettescale = d3v5.scaleSequential()
-        .domain([minValue, maxValue])
+        .domain([minvalue, maxvalue])
         .interpolator(d3v5.interpolateGnBu);
 
     // Set the domains
-    yScale.domain(Object.keys(dataset));
-    xScale.domain([0, maxValue]);
+    yscale.domain(Object.keys(dataset));
+    xscale.domain([0, maxvalue]);
 
     // Update y-axis
-    yAxis.transition().duration(1000)
+    yaxis.transition().duration(1000)
         .attr("class", "axis")
-        .call(d3v5.axisLeft(yScale));
+        .call(d3v5.axisLeft(yscale));
 
-    yAxis.selectAll("text.y-label").remove();
+    yaxis.selectAll("text.y-label").remove();
 
-    yAxis.append("text")
+    yaxis.append("text")
         .attr("class", "y-label")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left )
@@ -139,19 +139,19 @@ function updatebarchart(dataset, name, year, type)
         .text(type + " categories");
 
     // Update x-axis
-    xAxis.transition().duration(1000)
+    xaxis.transition().duration(1000)
         .attr("class", "axis")
-        .call(d3v5.axisTop(xScale));
+        .call(d3v5.axisTop(xscale));
 
-    xAxis.selectAll("text")
+    xaxis.selectAll("text")
           .style("text-anchor", "end")
           .attr("dx", ".95em")
           .attr("dy", ".25em")
           .attr("transform", "translate(0," + (0 - barPadding / 2) + ")", "rotate(-90)" );
 
-    xAxis.selectAll("text.x-label").remove();
+    xaxis.selectAll("text.x-label").remove();
 
-    xAxis.append("text")
+    xaxis.append("text")
          .attr("class", "x-label")
          .attr("y", - margin.top / 2)
          .attr("x", h * 1.05)
@@ -159,7 +159,7 @@ function updatebarchart(dataset, name, year, type)
          .style("text-anchor", "middle")
          .style("fill", "MintCream")
          .style("font-size", "20px")
-         .text("Amount produced in tonnes");
+         .text("Amount produced in 1,000 tonnes");
 
     // Call tip
     svg.call(tip);
@@ -175,14 +175,14 @@ function updatebarchart(dataset, name, year, type)
      .transition()
      .duration(1000)
      .attr("y", function(d,i) {
-       return yScale(Object.keys(dataset)[i]);
+       return yscale(Object.keys(dataset)[i]);
        })
      .attr("x", function(d) {
-       return xScale(d3v5.range(d.length)) + barPadding;
+       return xscale(d3v5.range(d.length)) + barPadding;
        })
-      .attr("height", yScale.bandwidth())
+      .attr("height", yscale.bandwidth())
       .attr("width", function(d) {
-           return xScale(d);
+           return xscale(d);
            })
       .attr("fill", function(d, i) {
          return palettescale(Object.values(dataset)[i]);

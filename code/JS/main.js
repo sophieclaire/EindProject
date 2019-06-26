@@ -32,7 +32,7 @@ function startfunction(year)
         .then(json => {
             var data = transformdata(json, year);
             var dataset = data[0];
-            var palette_scale = data[1];
-            drawmap(json, dataset, palette_scale, year);
+            var palettescale = data[1];
+            drawmap(json, dataset, palettescale, year);
     });
 }

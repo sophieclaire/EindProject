@@ -71,7 +71,7 @@ function newpiechart(countrydata, piedata, id, name, year)
         r = Math.min(w, h) / 2;
 
     // Set the color scheme
-    var color = d3v5.scaleOrdinal()
+    var palettescale = d3v5.scaleOrdinal()
                     .domain(piedata)
                     .range(d3v5.schemeGnBu[4]);
 
@@ -85,7 +85,7 @@ function newpiechart(countrydata, piedata, id, name, year)
           .outerRadius(r - 10)
           .innerRadius(0);
 
-    var labelArc = d3v5.arc()
+    var labelarc = d3v5.arc()
           .outerRadius(r - 80)
           .innerRadius(r - 40);
 
@@ -118,7 +118,7 @@ function newpiechart(countrydata, piedata, id, name, year)
 
     g.append("path")
         .attr("d", arc)
-        .style("fill", function(d) { return color(d.data.type);})
+        .style("fill", function(d) { return palettescale(d.data.type);})
         .on("mouseover", tip.show)
         .on('mouseout', tip.hide);
 
@@ -129,7 +129,7 @@ function newpiechart(countrydata, piedata, id, name, year)
       .attr("height", rectsize)
       .attr("transform", "translate(" + w / 1.13 + "," + h * .15 +")")
       .attr('stroke', 'white')
-      .style("fill", function(d) { return color(pie["1"].data.type)});
+      .style("fill", function(d) { return palettescale(pie["1"].data.type)});
 
       svg.append("text")
           .attr("transform", "translate(" + w / 1.1 + "," + h * .25 +")")
@@ -141,18 +141,12 @@ function newpiechart(countrydata, piedata, id, name, year)
         .attr("height", rectsize)
         .attr("transform", "translate(" + w / 1.13 + "," + - .1* h +")")
         .attr('stroke', 'white')
-        .style("fill", function(d) { return color(pie["0"].data.type)});
+        .style("fill", function(d) { return palettescale(pie["0"].data.type)});
 
     svg.append("text")
         .attr("transform", "translate(" + w / 1.1 + "," + h * .01 +")")
         .text("Food")
         .style("fill", "#fff");
-
-
-    // g.append("text")
-    //     .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-    //     .text(function(d) { return d.data.type;})
-    //     .style("fill", "#fff");
 
     var actualyear = year.replace('Y', '');
 
@@ -196,9 +190,7 @@ function updatepiechart(countrydata, piedata, id, name, year)
     svg.select("text.title").text("Food v Feed for " + [name] + " in " + [actualyear]);
 
     // Redraw the arcs
-    path.transition().duration(750).attrTween("d", arcTween);
-
-
+    path.transition().duration(750).attrTween("d", arctween);
 
     // Draw barchart when clicking on a slice
     svg.selectAll(".arc")
@@ -210,7 +202,7 @@ function updatepiechart(countrydata, piedata, id, name, year)
 }
 
 // This function is used when updating the piechart
-function arcTween(a)
+function arctween(a)
 {
     // Set the width, height and radius
     var w = 350,
@@ -225,6 +217,6 @@ function arcTween(a)
     var i = d3v5.interpolate(this._current, a);
     this._current = i(0);
     return function(t) {
-    return arc(i(t));
+        return arc(i(t));
     };
 }

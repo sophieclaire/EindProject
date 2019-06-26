@@ -25,20 +25,20 @@ function transformdata(json, year)
     });
 
     // Get the values for the color palette domain
-    var onlyValues = replacekey.map(function(obj){ return obj[1][year]; });
+    var onlyvalues = replacekey.map(function(obj){ return obj[1][year]; });
 
     // Remove undefined vales
-    onlyValues = onlyValues.filter(function( element ) {
+    onlyvalues = onlyvalues.filter(function( element ) {
      return element !== undefined;
     });
 
     // Set min & max values
-    minValue = Math.min.apply(Math, onlyValues);
-    maxValue = Math.max.apply(Math, onlyValues);
+    minvalue = Math.min.apply(Math, onlyvalues);
+    maxvalue = Math.max.apply(Math, onlyvalues);
 
     // Create plette scale
-    var paletteScale = d3v5.scaleSequential()
-            .domain([minValue, maxValue / 2])
+    var palettescale = d3v5.scaleSequential()
+            .domain([minvalue, maxvalue / 2])
             .interpolator(d3v5.interpolateGnBu);
 
     // Fill the dataset with production amounts
@@ -48,15 +48,15 @@ function transformdata(json, year)
         var countrycode = item[0],
             index = Math.round(item[1][year]),
             country = item[2];
-        dataset[countrycode] = { Production: index, fillColor: paletteScale(index), country : country };
+        dataset[countrycode] = { Production: index, fillColor: palettescale(index), country : country };
     });
 
-    var variables = [dataset, paletteScale];
+    var variables = [dataset, palettescale];
     return variables;
     }
 
 // This function draws the world map and colors each coutry according to their production
-function drawmap(data, dataset, paletteScale, year)
+function drawmap(data, dataset, palettescale, year)
 {
 
     var actualyear = year.replace('Y', '');
@@ -131,5 +131,5 @@ function drawmap(data, dataset, paletteScale, year)
     });
 
     // Call function that draws the map legend
-    drawlegend(dataset, paletteScale, minValue, maxValue);
+    drawlegend(dataset, minvalue, maxvalue);
 }

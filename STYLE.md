@@ -12,7 +12,7 @@ Within a function, the brackets ({}) will be on a new line by themselves.
 
 ## Variables and functions names
 Function names will not contain capital letters.
-Variable names may contain capital letters if they are composed of two or more words.
+Variable names will also not contain capital letters nor underscores.
 
 ## Code grouping and organization
 Each graph will have a seperate file with code.

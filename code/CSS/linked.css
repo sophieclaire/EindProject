@@ -52,11 +52,12 @@ body {
     font-family: Georgia;
     font-size: 18px;
 }
-.data-text {
+.info {
     margin-right: 20px;
     font-size: 15px;
     font-family: Georgia;
     line-height:1.5;
+    color: #073983;
 }
 
 /*--- Figure positioning ---*/
