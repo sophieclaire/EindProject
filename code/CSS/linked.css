@@ -73,7 +73,7 @@ body {
 /*--- Button styling ---*/
 .button#Year {
     position: relative;
-    width: 10%;
+    width: 120px;
     background-color: #e6fceb;
     color: black;
     border: 2px solid #073983;

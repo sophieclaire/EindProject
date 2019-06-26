@@ -12,7 +12,8 @@ We had our first stand-up meeting this morning. My team mates thought my idea wa
 I have not been able to change the strucure but I have made a new file that contains total production per country per year. This loads into my map!
 
 ## Day 4
-Today we started off with our standup meeting. Everyone made a to-do list. I still have to write the code for my barchart. And then add the buttons. I also have to make the graphs interactive, so that they can load a data file for each country. Today I wrote the code for the barchart. I am still hardcoding the opening of the countries' data file, but it is looking good. Moreover, I tried calling the function barchart from my main file but that gave me an error, so right now I am calling the barchart function when the page loads.
+Today we started off with our standup meeting. Everyone made a to-do list. I still have to write the code for my barchart. And then add the buttons. I also have to make the graphs interactive, so that they can load a data file for each country.
+Today I wrote the code for the barchart. I am still hardcoding the opening of the countries' data file, but it is looking good. Moreover, I tried calling the function barchart from my main file but that gave me an error, so right now I am calling the barchart function when the page loads.
 
 ## Day 5
 My group gave me the advice to change the orientation of my barchart. It would be better to put the type of food on the y axis, as that would be easier to read. Furthermore, maybe I should change the color scheme as right now a specfic type of food seems to be linked to a country if the color is the same. I also got the advice to add a button to change the order of the data within the barchart. So perhaps ascending, descending and alphabetical.
@@ -22,7 +23,7 @@ My group gave me the advice to change the orientation of my barchart. It would b
 ## Day 6
 I was able to link the piechart to the barchart. Now when you click on a country just the piechart appears, and then when clicking on one part of the piechart, the bargraph appears.
 I also changed the color scheme, I wanted to use colors similar to those of crops.  
-Furthemore, I added bootstrap to have a navugation bar at the top.
+Furthemore, I added bootstrap to have a navigation bar at the top.
 ![before](doc/PROCESS-0460fda6.png)
 ![after](doc/PROCESS-f4856dfb.png)
 
@@ -47,7 +48,7 @@ Today I got as feedback that I should put my x axis of my barchart at the top, s
 
 ## Day 10
 
-I fixed China's problem! So the barchart wasn't ordering itself in an ascending manner whereas the data had been sorted. My mentor figured out that the problem was that there were duplicate items in the dataset, for example sweet potatoes appeared 8 times. I removed all the duplicates and now it works perfectly.
+I fixed China's problem! So the barchart wasn't ordering itself in an ascending manner whereas the data had been sorted. My mentor, Renske, figured out that the problem was that there were duplicate items in the dataset, for example sweet potatoes appeared 8 times. I removed all the duplicates and now it works perfectly.
 ![chinabefore](doc/PROCESS-957c02b3.png)
 ![chinaafter](doc/PROCESS-b4d3aa5d.png)
 
@@ -82,4 +83,4 @@ Today I changed the colors a bit, by changing the color scheme used for the map,
 
 ## Day 16
 
-I changed the legend of my piechart because when the data was very small for feed the label would not be positioned correctly. Now the legend is outside of the piechart. I also started writing my final report. 
+I changed the legend of my piechart because when the data was very small for feed the label would not be positioned correctly. Now the legend is outside of the piechart. I also started writing my final report.
