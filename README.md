@@ -1,10 +1,10 @@
-# Food production around the World and over the years
+# [Food production around the World and over the years] (https://sophieclaire.github.io/project/code/HTML/index.html)
 
 The world population keeps on growing, in 2050 it is expected to rise to 9.7 billion.
 Food is finite and its production has a huge impact on the environment. Production efficiency is key in this regard.
 Not only do many countries produce food for their citizens, but also for their livestock: feed.
 This visualization shows how much food each country produces and which percentage of this goes to humans (actual food), and which percentage goes to animals (feed).
-It includes a world map showing a country's total food plus feed production. There is also a button to change the year. 
+It includes a world map showing a country's total food plus feed production. There is also a button to change the year.
 ![worldmap](doc/README-ad0effe3.png)
 
 A piechart showing the distribution of food vs feed for that country.
