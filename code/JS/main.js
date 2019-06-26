@@ -27,7 +27,7 @@ function updateyear(e)
 // Function that fetches and transfroms the data
 function startfunction(year)
 {
-    fetch("map_data.json")
+    fetch("../../data/map_data.json")
         .then(response => response.json())
         .then(json => {
             var data = transformdata(json, year);

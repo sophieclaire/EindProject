@@ -8,7 +8,7 @@ This file draws a piechart showing the amount of food v the amount of feed
 function drawpiechart(id, name, year, production)
 {
 
-    var countryfilename = 'data/' + [id] + '.json'
+    var countryfilename = '../../data/' + [id] + '.json'
 
     // Get data
     fetch(countryfilename)
@@ -94,7 +94,7 @@ function newpiechart(countrydata, piedata, id, name, year)
           .attr('class', 'd3-tip')
           .offset([-10, 0])
           .html(function(d) {
-            return d.value + "</span> <strong>%</strong>";
+            return d.value + "</span> <strong>%</strong>" + d.data.type;
             })
 
     // Select the svg and append the pie
