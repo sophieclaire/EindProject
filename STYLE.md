@@ -15,5 +15,5 @@ Function names will not contain capital letters.
 Variable names will also not contain capital letters nor underscores.
 
 ## Code grouping and organization
-Each graph will have a seperate file with code.
+Each graph will have a separate file with code.
 Each function will serve a single purpose.
