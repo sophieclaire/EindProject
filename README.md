@@ -1,4 +1,4 @@
-# [Food production around the World and over the years] (https://sophieclaire.github.io/project/code/HTML/index.html)
+# [Food production around the World and over the years](https://sophieclaire.github.io/project/code/HTML/index.html)
 
 The world population keeps on growing, in 2050 it is expected to rise to 9.7 billion.
 Food is finite and its production has a huge impact on the environment. Production efficiency is key in this regard.
