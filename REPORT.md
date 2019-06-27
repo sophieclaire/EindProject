@@ -1,5 +1,9 @@
 # Final Report
+Sophie Stiekema, 10992499
+Minor Programmeren, Universiteit van Amsterdam
 
+[Website](https://sophieclaire.github.io/project/code/HTML/index.html)
+[Video]
 ## Description
 My data visualization starts with a world map showing how much food each country produces in the year 2013. A darker color means a higher production. When clicking on a country a piechart appears showing what percentage of the food produced is actually used for humans (food), and which percentage is used for animals (feed). The user can then click on one of the two slices of the pie and a barchart will appear showing the exact amount of each food or feed element produced by that country in that year. The bar chart can be sorted in ascending or descending order. The year can be changed via a dropdown button at the top of the page.
 ![Screenshot](doc/REPORT-6be0a26a.png)
@@ -13,9 +17,9 @@ First, give a high level overview, which helps us navigate and understand the to
 All data files are contained within the data folder. All pictures are contained in the doc folder. All code is contained within the code folder, this one contains three folders: HTML, JS and CSS which each contain respective code files.
 
 There are 3 HTML files, one for each page.
-The most important one is the index.html file, this one displays all the visualizations.
+The most important one is the index.html file, this one displays all the visualizations. The data file provides more information on the data I have used and the about file talks about the problem and gives a suggestion to the reader.
 
-There are also several JS files, one for each graph.
+There are 5 JS files, one for each graph.
 
 ### main.js
 The main.js file sets the initial year (2013). It contains two functions. One that updates the data for each year when the dropdown button is used. And one that fetches the data and calls the transformation function and then the function that draws the worldmap.
@@ -27,9 +31,20 @@ The map.js file contains two functions. One that prepares the data for the world
 The maplegend.js file contains just one function that draws the legend for the worldmap. It creates horizontal gradient bar with an x-axis to explain what the colors of the worldmap mean.
 
 ### piechart.js
-The piechart.js file draws the piechart when the user clicks on a country in the worldmap. This file contains four functions. One that is called in the map.js file and fetches the data for the specific country, it counts the amount of
+The piechart.js file draws the piechart when the user clicks on a country in the worldmap. This file contains four functions. One that is called in the map.js file and fetches the data for the specific country, it counts the amount of food or feed produced and converts it into a percentage of total production. Then there is a function that draws a new piechart if none has been made yet, and a function that updates this piechart. The last function is used during the transitions when updating the pie chart.
+
+### barchart.js
+The barchart.js file draws a barchart when the user clicks on a slice of the pie.  
 
 There is only one CSS file for the style.
+
+There are several markdown files
+- DESIGN.md: contains my initial design ideas.
+- PROCESS.md: the process book, covering what I have done each day
+- PROPOSAL.md: initial proposal
+- README.md: Brief explanation and listing of external Sources
+- REPORT.md: this file
+- STYLE.md: JS style guide
 
 ## Challenges
 

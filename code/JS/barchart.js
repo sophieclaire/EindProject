@@ -2,7 +2,7 @@
 Sophie Stiekema
 10992499
 This file creates a barchart and updates it.
-It lso includes a button that changes the sorting order of the barchart.
+It also includes a button that changes the sorting order of the barchart.
 */
 
 // This function is called when the button to change the barchart order is pressed
