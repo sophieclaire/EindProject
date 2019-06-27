@@ -3,7 +3,7 @@ Sophie Stiekema, 10992499
 Minor Programmeren, Universiteit van Amsterdam
 
 [Website](https://sophieclaire.github.io/project/code/HTML/index.html)
-[Video]
+[Video](https://www.youtube.com/watch?v=o0iD2iGQh24&feature=youtu.be)
 ## Description
 My data visualization starts with a world map showing how much food each country produces in the year 2013. A darker color means a higher production. When clicking on a country a piechart appears showing what percentage of the food produced is actually used for humans (food), and which percentage is used for animals (feed). The user can then click on one of the two slices of the pie and a barchart will appear showing the exact amount of each food or feed element produced by that country in that year. The bar chart can be sorted in ascending or descending order. The year can be changed via a dropdown button at the top of the page.
 ![Screenshot](doc/REPORT-6be0a26a.png)
