@@ -71,6 +71,6 @@ Another challenge was to actually update the graphs instead of deleting and redr
 
 A big challenge was the appearance of the website, I struggled with making it look better, bootstrap helped a lot with this, and a gradient background also made it look much nicer.
 
-In the end I decided to to implement a slider but keep the dropdown button to change the year because I did not have the time to properly implement that. Therefore, I am only showing part of the data (years 2001-2013) as the dropdown menu would be too long otherwise. If I had more time I would implement a slider for all the years so that you could see how production changed in the world over half a century.
+In the end I decided not to implement a slider but keep the dropdown button to change the year because I did not have the time to properly implement that. Therefore, I am only showing part of the data (years 2001-2013) as the dropdown menu would be too long otherwise. If I had more time I would implement a slider for all the years so that you could see how production changed in the world over half a century.
 
-I changed the color scheme a couple of times, in the end I settled with InterpolateGnBu(green to blue) as this showed differences between countries better.
+I changed the color scheme a couple of times, in the end I settled with InterpolateGnBu(green to blue) as this provided more hues and thus showed differences between countries better.
