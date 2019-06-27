@@ -2,12 +2,6 @@
 Sophie Stiekema,
 10992499,
 This file creates a world map, a pie chart and a bar chart
-
-Inspiration taken From:
-https://www.d3-graph-gallery.com/graph/custom_legend.html
-http://bl.ocks.org/alansmithy/e984477a741bc56db5a5
-https://bl.ocks.org/mbostock/3808221
-https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
 -->
 
 <!DOCTYPE html>
@@ -38,16 +32,16 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
       window.d3 = null;
     </script>
 
+    <!-- Import JS files -->
     <script type="text/javascript" src="../JS/main.js"></script>
     <script type="text/javascript" src="../JS/map.js"></script>
     <script type="text/javascript" src="../JS/maplegend.js"></script>
     <script type="text/javascript" src="../JS/piechart.js"></script>
     <script type="text/javascript" src="../JS/barchart.js"></script>
 
-
+    <!-- Import CSS-->
     <link rel="stylesheet" type="text/css" href="../CSS/linked.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-
 
     <title> Food Production </title>
 
@@ -62,13 +56,12 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
                   <li class="active"><a href="index.html">GRAPHS</a></li>
                   <li><a href="data.html">DATA</a></li>
                   <li><a href="about.html">ABOUT</a></li>
+                </ul>
+            </div>
+          </div>
+        </nav>
 
-        </ul>
-      </div>
-    </div>
-    </nav>
-
-<h1 class="header"> Food production around the World and over the years</h1>
+    <h1 class="header"> Food production around the World and over the years</h1>
 
     <p class="text-intro"> These graphics give an insight into food production around the world. The world map shows how much food each country produces, when hovering over a certain country, you can see exactly how much it produced for that year. When clicking on a country a pie chart appears that shows the percentage of the totl production that is actually food, so used for humans, and which percentage is feed, so used for animals.
         When clicking on a piece of the piechart, a barchart appears that shows all the food or feed elements produced in that country and in which precise amount. The bar chart can be sorted in ascending and descending order. When hovering over a bar, the exact production amount is shown.
@@ -91,16 +84,15 @@ https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
       <option value="Y2011">2011</option>
       <option value="Y2012">2012</option>
       <option value="Y2013">2013</option>
-
     </select>
 
-        <div class="figure" id="container" style="position: relative; width: 1300px; height: 650px;"></div>
-        <div class="figure" id="piechart" style="position: relative; width: 600px; height: 550px;"></div>
-        <button class="button" id="sortbutton" onclick="changeorder()">Change sorting order</button>
-        <div class="figure" id="barchart" style="position: relative; width: 1300px; height: 1350px;"></div>
+    <div class="figure" id="container" style="position: relative; width: 1300px; height: 650px;"></div>
+    <div class="figure" id="piechart" style="position: relative; width: 600px; height: 550px;"></div>
+    <button class="button" id="sortbutton" onclick="changeorder()">Change sorting order</button>
+    <div class="figure" id="barchart" style="position: relative; width: 1300px; height: 1350px;"></div>
 
-
-        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <!-- Import Bootstrap JS file -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
 
   </body>
 </html>
